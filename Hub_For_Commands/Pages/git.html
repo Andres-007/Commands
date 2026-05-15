@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Commands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/stylegit.css">
+</head>
+
+<body>
+    <!-- Page Transition Overlay -->
+    <div id="transition-overlay" class="transition-overlay"></div>
+
+    <header class="hub-header">
+        <h1>Git Commands</h1>
+        <p>Essential commands for version control and repository management.</p>
+        <div style="margin-top: 20px;">
+            <a href="../index.html" class="nav-btn secondary transition-link">← Back to Hub</a>
+        </div>
+    </header>
+
+    <main class="hub-container">
+        <section id="git">
+            <div id="search-container" class="search-container mb-4">
+                <input type="text" id="command-search" placeholder="Search commands..." autofocus>
+            </div>
+            <ul id="command-list" class="command-list">
+                <!-- Commands will be inserted here dynamically -->
+                <li>git init - Initialize a new Git repository</li>
+                <li>git clone [url] - Clone a repository into a new directory</li>
+                <li>git status - Show the working tree status</li>
+                <li>git add . - Add file contents to the index</li>
+                <li>git commit -m "[message]" - Record changes to the repository</li>
+                <li>git push - Update remote refs along with associated objects</li>
+                <li>git pull - Fetch from and integrate with another repository or a local branch</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="../js/js.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+/* Specific styles for Git page commands list */
+
+#search-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#command-search {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 20px;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#command-search:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+#command-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#command-list li {
+    padding: 18px 24px;
+    background-color: #0a0a0a;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+#command-list li:hover {
+    background-color: #1a1a1a;
+    transform: translateX(5px);
+    border-color: #555555;
+}
