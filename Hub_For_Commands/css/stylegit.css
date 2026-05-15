@@ -1,50 +1,262 @@
-/* Specific styles for Git page commands list */
+/* Specific styles for Git page interactive hub */
+
+.git-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .git-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Left Sidebar (Search & List) --- */
+.git-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 #search-container {
-    display: flex;
-    justify-content: center;
     width: 100%;
 }
 
 #command-search {
     width: 100%;
-    max-width: 600px;
     padding: 15px 20px;
-    border: 1px solid #333333;
+    border: 1px solid #333;
     border-radius: 8px;
     background-color: #0a0a0a;
-    color: #ffffff;
+    color: #fff;
     font-size: 1rem;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #command-search:focus {
-    border-color: #ffffff;
+    border-color: #fff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 #command-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     list-style: none;
-    max-width: 800px;
-    margin: 0 auto;
     padding: 0;
+    padding-right: 10px; /* Prevent clipping during hover transform */
+    margin: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden; /* Hide horizontal scrollbar that causes blinking */
 }
 
-#command-list li {
-    padding: 18px 24px;
+/* Custom scrollbars for dark theme */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.command-item {
+    padding: 15px;
     background-color: #0a0a0a;
-    border: 1px solid #222222;
+    border: 1px solid #222;
     border-radius: 8px;
     transition: transform 0.2s ease, background-color 0.2s ease;
     cursor: pointer;
+    font-size: 0.9rem;
+    color: #aaa;
 }
 
-#command-list li:hover {
+.command-item strong {
+    color: #fff;
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
+.command-item:hover {
     background-color: #1a1a1a;
+    border-color: #555;
     transform: translateX(5px);
-    border-color: #555555;
-}
+}
+
+.command-item.active {
+    border-color: #fff;
+    background-color: #222;
+}
+
+
+/* --- Right Content (Details & Simulator) --- */
+.git-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.placeholder-msg {
+    text-align: center;
+    padding: 40px;
+    background-color: #0a0a0a;
+    border: 1px dashed #444;
+    border-radius: 8px;
+    color: #888;
+}
+
+.detail-card {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.cmd-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.code-block {
+    background-color: #000;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #222;
+}
+
+.code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff00;
+    font-size: 1.1rem;
+}
+
+.explanation-box {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #0a0a0a;
+}
+
+.explanation-box p {
+    margin: 10px 0 0 0;
+    line-height: 1.5;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-nontech {
+    background-color: rgba(65, 105, 225, 0.2);
+    color: #6495ed;
+    border: 1px solid rgba(65, 105, 225, 0.4);
+}
+
+.badge-tech {
+    background-color: rgba(255, 140, 0, 0.2);
+    color: #ffa500;
+    border: 1px solid rgba(255, 140, 0, 0.4);
+}
+
+
+/* --- Interactive Terminal --- */
+.terminal-container {
+    background-color: #0d0d0d;
+    border-radius: 8px;
+    border: 1px solid #333;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+}
+
+.terminal-header {
+    background-color: #222;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #111;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.term-title {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-left: 10px;
+    font-family: monospace;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.bash-line {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.terminal-input-wrapper {
+    display: flex;
+    padding: 10px 15px;
+    background-color: #000;
+    border-top: 1px solid #222;
+    align-items: center;
+}
+
+.prompt {
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.bash-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    outline: none;
+}

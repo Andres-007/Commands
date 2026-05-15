@@ -24,25 +24,62 @@
         </div>
     </header>
 
-    <main class="hub-container">
-        <section id="git">
-            <div id="search-container" class="search-container mb-4">
-                <input type="text" id="command-search" placeholder="Search commands..." autofocus>
+    <main class="hub-container git-layout">
+        <!-- Left Column: Search & List -->
+        <section class="git-sidebar">
+            <div id="search-container" class="search-container">
+                <input type="text" id="command-search" placeholder="Search (e.g., 'upload' or 'git push')..." autofocus>
             </div>
             <ul id="command-list" class="command-list">
-                <!-- Commands will be inserted here dynamically -->
-                <li>git init - Initialize a new Git repository</li>
-                <li>git clone [url] - Clone a repository into a new directory</li>
-                <li>git status - Show the working tree status</li>
-                <li>git add . - Add file contents to the index</li>
-                <li>git commit -m "[message]" - Record changes to the repository</li>
-                <li>git push - Update remote refs along with associated objects</li>
-                <li>git pull - Fetch from and integrate with another repository or a local branch</li>
+                <!-- Dynamically populated by JS -->
             </ul>
+        </section>
+
+        <!-- Right Column: Details & Simulator -->
+        <section class="git-content">
+            <div id="detail-placeholder" class="placeholder-msg">
+                <p>Select a command to view details and try it out.</p>
+            </div>
+            
+            <div id="detail-content" class="detail-card" style="display: none;">
+                <h2 id="detail-title" class="cmd-title">Command</h2>
+                <div class="code-block">
+                    <code id="detail-command">git example</code>
+                </div>
+                
+                <div class="explanation-box non-tech">
+                    <span class="badge badge-nontech">Plain English</span>
+                    <p id="detail-nontech">Simple explanation here.</p>
+                </div>
+                
+                <div class="explanation-box tech">
+                    <span class="badge badge-tech">Technical</span>
+                    <p id="detail-tech">Technical description here.</p>
+                </div>
+            </div>
+
+            <!-- Interactive Terminal -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="term-title">bash -- Git Simulator</span>
+                </div>
+                <div class="terminal-body" id="bash-output">
+                    <div class="bash-line">Welcome to the Git Bash Simulator. Try typing 'git init' to start!</div>
+                </div>
+                <div class="terminal-input-wrapper">
+                    <span class="prompt">$</span>
+                    <input type="text" id="bash-input" class="bash-input" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
         </section>
     </main>
 
     <script src="../js/js.js"></script>
+    <script src="../js/git-data.js"></script>
+    <script src="../js/git-simulator.js"></script>
 </body>
 
 </html>
