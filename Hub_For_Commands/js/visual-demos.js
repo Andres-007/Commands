@@ -90,6 +90,42 @@
             '</div>';
     }
 
+    function gitInitDemo(el) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview</p>' +
+            '<p class="visual-demo__caption">A new hidden <strong>.git/</strong> folder is created to track changes.</p>' +
+            '<div style="display:flex; gap:20px; align-items:center; padding:15px; background:#111; border:1px solid #333; border-radius:8px;">' +
+            '<div style="font-size:2rem;">📁 <span style="font-size:1rem; color:#aaa">project/</span></div>' +
+            '<div style="font-size:1.5rem; opacity:0; animation: fadeInRight 0.5s ease forwards; color:#4caf50;">&rarr;</div>' +
+            '<div style="opacity:0; animation: fadeInRight 0.5s ease 0.3s forwards; padding:10px; border:1px dashed #4caf50; border-radius:6px; font-family:monospace;">📁 .git/</div>' +
+            '</div>' +
+            '<style>@keyframes fadeInRight { from { opacity:0; transform:translateX(-10px); } to { opacity:1; transform:translateX(0); } }</style>';
+    }
+
+    function gitAddDemo(el) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview</p>' +
+            '<p class="visual-demo__caption">Files move from the <strong>Working Directory</strong> to the <strong>Staging Area</strong>.</p>' +
+            '<div style="display:flex; justify-content:space-between; text-align:center; padding:15px; background:#111; border:1px solid #333; border-radius:8px;">' +
+            '<div style="width:40%;"><strong>Working Dir</strong><div style="margin-top:10px; padding:10px; background:#333; border-radius:4px; opacity:0.5; transition:all 0.5s;">📄 index.html</div></div>' +
+            '<div style="width:10%; align-self:center; font-size:1.5rem; color:#4caf50;">&rarr;</div>' +
+            '<div style="width:40%;"><strong>Staging Area</strong><div style="margin-top:10px; padding:10px; background:#4caf50; color:#fff; border-radius:4px; opacity:0; animation: fadeUp 0.5s ease 0.4s forwards;">📄 index.html</div></div>' +
+            '</div>' +
+            '<style>@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }</style>';
+    }
+
+    function gitCommitDemo(el) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview</p>' +
+            '<p class="visual-demo__caption">Staged files are permanently bundled into a <strong>Commit Snapshot</strong> in the history.</p>' +
+            '<div style="display:flex; justify-content:space-between; text-align:center; padding:15px; background:#111; border:1px solid #333; border-radius:8px;">' +
+            '<div style="width:40%;"><strong>Staging Area</strong><div style="margin-top:10px; padding:10px; background:#4caf50; color:#fff; border-radius:4px;">📄 index.html</div></div>' +
+            '<div style="width:10%; align-self:center; font-size:1.5rem; color:#f44336;">&rarr;</div>' +
+            '<div style="width:40%;"><strong>History</strong><div style="margin-top:10px; padding:10px; background:#f44336; color:#fff; border-radius:50%; width:60px; height:60px; line-height:40px; margin:10px auto 0; opacity:0; animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards;">#a1b2</div></div>' +
+            '</div>' +
+            '<style>@keyframes scaleIn { from { opacity:0; transform:scale(0.5); } to { opacity:1; transform:scale(1); } }</style>';
+    }
+
     var DEMOS = {
         'css-padding': paddingDemo,
         'css-margin': marginDemo,
@@ -97,17 +133,30 @@
         'css-box-sizing': boxSizingDemo,
         'bash-ls': bashLsDemo,
         'git-branches': gitBranchesDemo,
+        'git-init-demo': gitInitDemo,
+        'git-add-demo': gitAddDemo,
+        'git-commit-demo': gitCommitDemo,
     };
+
+    function genericTerminalDemo(el, id) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview</p>' +
+            '<p class="visual-demo__caption">Interactive terminal execution for <strong>' + (id || 'command') + '</strong>.</p>' +
+            '<div class="vd-generic-term" style="background:#000; padding:15px; border-radius:6px; font-family:monospace; color:#0f0; min-height:80px; border:1px solid #333; margin-top:10px;">' +
+            '<div><span style="color:#aaa">$</span> <span class="vd-typewriter">' + (id || 'executing...') + '</span><span class="vd-cursor" style="animation: blink 1s step-end infinite;">_</span></div>' +
+            '<div style="color:#aaa; margin-top:8px; opacity:0; animation: fadeIn 0.5s ease 1.5s forwards;">[Process completed]</div>' +
+            '</div>' +
+            '<style>@keyframes blink { 50% { opacity: 0; } } @keyframes fadeIn { to { opacity: 1; } }</style>';
+    }
 
     window.applyVisualDemo = function (id, rootEl) {
         if (!rootEl) return;
         var fn = DEMOS[id];
+        rootEl.classList.remove('visual-demo--empty');
         if (!fn) {
-            rootEl.innerHTML = '';
-            rootEl.classList.add('visual-demo--empty');
+            genericTerminalDemo(rootEl, id);
             return;
         }
-        rootEl.classList.remove('visual-demo--empty');
         fn(rootEl);
     };
 

@@ -6,7 +6,8 @@ const gitCommandsData = [
         technical_desc: "Creates an empty Git repository or reinitializes an existing one. It generates the .git directory structure, including the objects database, the refs directory for heads and tags, and the initial HEAD file.",
         non_technical_desc: "Think of this as creating a new, empty folder and telling Git 'Watch this folder for changes.' It's the very first step to start tracking a project.",
         example: "git init",
-        sim_output: "Initialized empty Git repository in /project/.git/"
+        sim_output: "Initialized empty Git repository in /project/.git/",
+        visualDemo: "git-init-demo"
     },
     {
         id: "git-clone",
@@ -33,7 +34,8 @@ const gitCommandsData = [
         technical_desc: "Moves content from the working tree to the index (staging area). It captures the state of a file at the moment the command is run. Use '.' to add all changes.",
         non_technical_desc: "This is like putting items into a shipping box. You're telling Git 'Get these specific changes ready to be saved in the next snapshot.'",
         example: "git add .",
-        sim_output: ""
+        sim_output: "",
+        visualDemo: "git-add-demo"
     },
     {
         id: "git-commit",
@@ -42,7 +44,8 @@ const gitCommandsData = [
         technical_desc: "Finalizes the staged changes by creating a new commit object in the database. This object points to a tree object, includes metadata, and establishes parent links to preserve history.",
         non_technical_desc: "This seals the shipping box and puts a label on it. It permanently saves the changes you prepared with 'git add' into the project's history.",
         example: "git commit -m \"Update index layout\"",
-        sim_output: "[main 3b1a2c4] Update index layout\n 1 file changed, 5 insertions(+), 2 deletions(-)"
+        sim_output: "[main 3b1a2c4] Update index layout\n 1 file changed, 5 insertions(+), 2 deletions(-)",
+        visualDemo: "git-commit-demo"
     },
     {
         id: "git-push",

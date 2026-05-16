@@ -28,6 +28,7 @@
         const detailNonTech = document.getElementById('detail-nontech');
         const placeholderMsg = document.getElementById('detail-placeholder');
         const detailContent = document.getElementById('detail-content');
+        const bashClearBtn = document.getElementById('bash-clear-btn');
 
         const termTitleEl = document.querySelector('.term-title');
         if (termTitleEl && cfg.terminalTitle) {
@@ -123,8 +124,9 @@
         function syncVisualDemo(cmd) {
             const el = document.getElementById('visual-demo');
             if (!el || typeof window.applyVisualDemo !== 'function') return;
-            if (cmd && cmd.visualDemo) {
-                window.applyVisualDemo(cmd.visualDemo, el);
+            if (cmd) {
+                const vid = cmd.visualDemo || cmd.id || cmd.command;
+                window.applyVisualDemo(vid, el);
             } else if (typeof window.clearVisualDemo === 'function') {
                 window.clearVisualDemo(el);
             } else {
@@ -209,6 +211,12 @@
                         : `bash: ${inputCmd.split(/\s+/)[0]}: command not found`;
                     appendOutput(unk);
                 }
+            });
+        }
+
+        if (bashClearBtn) {
+            bashClearBtn.addEventListener('click', () => {
+                if (bashOutput) bashOutput.innerHTML = '';
             });
         }
 

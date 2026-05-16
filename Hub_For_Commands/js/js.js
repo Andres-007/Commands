@@ -10,23 +10,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
 
-    // Intercept clicks on transition links to fade in before navigating
-    const transitionLinks = document.querySelectorAll('.transition-link');
-    transitionLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetUrl = link.href;
+    // Intercept clicks on transition links (delegation: works for dynamically added links)
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a.transition-link');
+        if (!link) return;
+        e.preventDefault();
+        const targetUrl = link.href;
 
-            if (overlay) {
-                overlay.classList.remove('hidden');
-                // Wait for the fade-in to finish before navigating
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 500); // Should match the CSS transition duration
-            } else {
+        if (overlay) {
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
                 window.location.href = targetUrl;
+            }, 500);
+        } else {
+            window.location.href = targetUrl;
+        }
+    });
+
+    // --- Make command cards clickable ---
+    document.body.addEventListener('click', (e) => {
+        // Ignore if clicking directly on a link (already handled)
+        if (e.target.closest('a')) return;
+        
+        const card = e.target.closest('.command-card');
+        if (card) {
+            const link = card.querySelector('a.transition-link, a[href]');
+            if (link) {
+                // If it's a transition link, we can trigger a click on it
+                link.click();
             }
-        });
+        }
     });
 
     // --- Search Functionality (for command pages) ---

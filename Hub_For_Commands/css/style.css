@@ -12,6 +12,22 @@ body {
     overflow-x: hidden;
 }
 
+/* Global Custom Scrollbars for Dark Theme */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 /* Page Transition Overlay */
 .transition-overlay {
     position: fixed;
@@ -72,6 +88,7 @@ body {
     padding: 24px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -183,5 +200,205 @@ body {
 @media (max-width: 768px) {
     .hub-header h1 {
         font-size: 2.2rem;
+    }
+}
+
+/* --- Linux folder tiles (hub index) --- */
+.hub-section-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin: 48px 0 8px;
+    letter-spacing: -0.02em;
+}
+
+.hub-section-lead {
+    font-size: 0.95rem;
+    color: #888888;
+    font-weight: 300;
+    margin-bottom: 20px;
+    max-width: 640px;
+}
+
+.hub-folder-cards-grid {
+    margin-top: 0;
+}
+
+.hub-folder-card {
+    background-color: #0a0a0a;
+    border: 1px solid #222222;
+    border-radius: 16px;
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hub-folder-card:hover {
+    transform: translateY(-4px);
+    border-color: #444444;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+}
+
+.hub-folder-card:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+.hub-folder-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 52px 52px;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 12px;
+    background-color: #141414;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+}
+
+.hub-folder-preview-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    font-size: 1.45rem;
+    line-height: 1;
+    border: 1px solid #2e2e2e;
+}
+
+.hub-folder-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.hub-folder-subtitle {
+    font-size: 0.88rem;
+    color: #999999;
+    font-weight: 300;
+    margin-bottom: 14px;
+    flex-grow: 1;
+}
+
+.hub-folder-meta {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #666666;
+}
+
+/* Modal */
+body.hub-folder-modal-open {
+    overflow: hidden;
+}
+
+.hub-folder-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.hub-folder-modal[hidden] {
+    display: none;
+}
+
+.hub-folder-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+}
+
+.hub-folder-modal-panel {
+    position: relative;
+    width: min(920px, 100%);
+    max-height: min(88vh, 900px);
+    display: flex;
+    flex-direction: column;
+    background: #161616;
+    border: 1px solid #333333;
+    border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+}
+
+.hub-folder-modal-head {
+    padding: 22px 52px 18px 24px;
+    border-bottom: 1px solid #2a2a2a;
+    flex-shrink: 0;
+}
+
+.hub-folder-modal-head h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.hub-folder-modal-head p {
+    font-size: 0.9rem;
+    color: #999999;
+    font-weight: 300;
+}
+
+.hub-folder-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #404040;
+    background: #222222;
+    color: #ffffff;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.hub-folder-modal-close:hover {
+    background: #333333;
+    border-color: #666666;
+}
+
+.hub-folder-modal-body {
+    padding: 22px 24px 28px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+#hub-folder-modal-grid {
+    margin-top: 0;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.hub-folder-inner-card .hub-folder-inner-glyph {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #1a1a1a, #252525);
+    border: 1px solid #303030;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.25rem;
+}
+
+@media (max-width: 768px) {
+    .hub-folder-modal {
+        padding: 12px;
     }
 }

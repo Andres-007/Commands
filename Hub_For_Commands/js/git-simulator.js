@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailNonTech = document.getElementById('detail-nontech');
     const placeholderMsg = document.getElementById('detail-placeholder');
     const detailContent = document.getElementById('detail-content');
+    const bashClearBtn = document.getElementById('bash-clear-btn');
 
     // Simulator State
     let isRepoInitialized = false;
@@ -39,12 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const vd = document.getElementById('visual-demo');
         if (vd && typeof window.applyVisualDemo === 'function') {
-            if (cmd.visualDemo) window.applyVisualDemo(cmd.visualDemo, vd);
-            else if (typeof window.clearVisualDemo === 'function') window.clearVisualDemo(vd);
-            else {
-                vd.innerHTML = '';
-                vd.classList.add('visual-demo--empty');
-            }
+            const vid = cmd.visualDemo || cmd.id || cmd.command;
+            window.applyVisualDemo(vid, vd);
         }
 
         // Auto-fill bash input to encourage trying it
@@ -86,6 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    if (bashClearBtn) {
+        bashClearBtn.addEventListener('click', () => {
+            if (bashOutput) bashOutput.innerHTML = '';
+        });
+    }
+
     function processBashCommand(inputStr) {
         const lowerInput = inputStr.toLowerCase();
         
@@ -122,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (matchedData) {
             const vd = document.getElementById('visual-demo');
             if (vd && typeof window.applyVisualDemo === 'function') {
-                if (matchedData.visualDemo) window.applyVisualDemo(matchedData.visualDemo, vd);
-                else if (typeof window.clearVisualDemo === 'function') window.clearVisualDemo(vd);
+                const vid = matchedData.visualDemo || matchedData.id || matchedData.command;
+                window.applyVisualDemo(vid, vd);
             }
             // Add a small delay for realism
             setTimeout(() => {

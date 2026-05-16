@@ -1,0 +1,8 @@
+const xbpsLinuxCommandsData = [
+    { id: "xbps-query-remote", command: "sudo xbps-install -Su", keywords: ["upgrade"], technical_desc: "Synchronizes remote repositories and upgrades.", non_technical_desc: "Full system update on Void.", example: "sudo xbps-install -Su", sim_output: "Name    Action Version\n kernel  update 6.8.9_1 ...\nTransaction succeeded." },
+    { id: "xbps-install", command: "sudo xbps-install <pkg>", keywords: ["add"], technical_desc: "XBPS installs packages from binary repos.", non_technical_desc: "Install software.", example: "sudo xbps-install nginx", sim_output: "nginx-1.26.0_1: found ...\nnginx-1.26.0_1: unpacking ...\nTransaction succeeded." },
+    { id: "xbps-remove", command: "sudo xbps-remove <pkg>", keywords: ["delete"], technical_desc: "Removes package files and updates pkgdb.", non_technical_desc: "Uninstall.", example: "sudo xbps-remove nginx", sim_output: "Removing nginx-1.26.0_1 ...\nTransaction succeeded." },
+    { id: "xbps-query", command: "xbps-query -Rs <term>", keywords: ["search"], technical_desc: "Remote search mode.", non_technical_desc: "Search repos.", example: "xbps-query -Rs vim", sim_output: "[*] vim-9.1.x ... Vi IMproved" },
+    { id: "xbps-alternatives", command: "sudo xbps-alternatives -s <group>", keywords: ["symlinks"], technical_desc: "Manages alternatives groups.", non_technical_desc: "Switch default binary for a group.", example: "sudo xbps-alternatives -s vi", sim_output: "vi -> /usr/bin/vim (selected)" },
+    { id: "sv", command: "sudo sv status <svc>", keywords: ["runit"], technical_desc: "Void uses runit by default; sv controls supervise.", non_technical_desc: "Check service status.", example: "sudo sv status sshd", sim_output: "run: sshd: (pid 881) ...; run: log: ..." },
+];

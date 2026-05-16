@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Commands</title>
+    <title>openSUSE / zypper Commands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/stylegit.css">
-    <link rel="stylesheet" href="../css/visual-demos.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/stylegit.css">
+    <link rel="stylesheet" href="../../css/visual-demos.css">
 </head>
-
 <body>
     <div id="transition-overlay" class="transition-overlay"></div>
-
     <header class="hub-header">
-        <h1>JavaScript Commands</h1>
-        <p>Node, ESLint, Prettier, Jest, bundlers.</p>
+        <h1>SUSE family</h1>
+        <p>zypper & YaST — Leap, Tumbleweed, SLES.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
         </div>
     </header>
-
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
@@ -31,28 +27,15 @@
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
-
         <section class="git-content">
-            <div id="detail-placeholder" class="placeholder-msg">
-                <p>Select a command to view details and try it in the terminal.</p>
-            </div>
-
+            <div id="detail-placeholder" class="placeholder-msg"><p>Select a command to view details and try it in the terminal.</p></div>
             <div id="detail-content" class="detail-card" style="display: none;">
                 <h2 id="detail-title" class="cmd-title">Command</h2>
-                <div class="code-block">
-                    <code id="detail-command">example</code>
-                </div>
-                <div class="explanation-box non-tech">
-                    <span class="badge badge-nontech">Plain English</span>
-                    <p id="detail-nontech"></p>
-                </div>
-                <div class="explanation-box tech">
-                    <span class="badge badge-tech">Technical</span>
-                    <p id="detail-tech"></p>
-                </div>
+                <div class="code-block"><code id="detail-command">example</code></div>
+                <div class="explanation-box non-tech"><span class="badge badge-nontech">Plain English</span><p id="detail-nontech"></p></div>
+                <div class="explanation-box tech"><span class="badge badge-tech">Technical</span><p id="detail-tech"></p></div>
                 <div id="visual-demo" class="visual-demo visual-demo--empty" aria-live="polite"></div>
             </div>
-
             <div class="terminal-container">
                 <div class="terminal-header">
                     <div style="display: flex; gap: 6px;">
@@ -71,25 +54,19 @@
             </div>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <p>SIXNIE</p>
-    </footer>
-
-    <script src="../js/js.js"></script>
-    <script src="../js/javascript-data.js"></script>
+    <footer class="site-footer"><p>SIXNIE</p></footer>
+    <script src="../../js/js.js"></script>
+    <script src="../../js/linux/zypper-data.js"></script>
     <script>
         window.commandHubConfig = {
-            commands: javascriptCommandsData,
-            terminalTitle: "bash - JavaScript tooling",
-            welcomeHtml: "node and npx tooling.",
-            promptSymbol: "$",
+            commands: zypperLinuxCommandsData,
+            terminalTitle: 'bash - zypper',
+            welcomeHtml: 'Try zypper search or sudo zypper install.',
+            promptSymbol: '$',
             requiredPrefix: null,
-
         };
     </script>
-    <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../../js/visual-demos.js"></script>
+    <script src="../../js/command-hub.js"></script>
 </body>
-
 </html>

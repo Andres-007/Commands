@@ -1,0 +1,9 @@
+const zypperLinuxCommandsData = [
+    { id: "zypper-refresh", command: "sudo zypper refresh", keywords: ["repos"], technical_desc: "Downloads repository metadata.", non_technical_desc: "Updates package catalog.", example: "sudo zypper refresh", sim_output: "Retrieving repository 'openSUSE-Tumbleweed-Oss' metadata ... done." },
+    { id: "zypper-update", command: "sudo zypper update", keywords: ["upgrade"], technical_desc: "Installs newer RPM versions.", non_technical_desc: "Applies updates.", example: "sudo zypper update", sim_output: "The following 8 packages are going to be upgraded:\n curl libcurl4 ..." },
+    { id: "zypper-install", command: "sudo zypper install <pkg>", keywords: ["in"], technical_desc: "SAT solver resolves RPM deps.", non_technical_desc: "Installs packages.", example: "sudo zypper install git", sim_output: "Installing: git-2.44.0-1.1.x86_64 ... done" },
+    { id: "zypper-remove", command: "sudo zypper remove <pkg>", keywords: ["rm"], technical_desc: "Removes RPM and cleans orphan deps with clean-deps.", non_technical_desc: "Uninstalls.", example: "sudo zypper remove apache2", sim_output: "Removing apache2-2.4.x ... done" },
+    { id: "zypper-search", command: "zypper search <term>", keywords: ["se"], technical_desc: "Queries repository patterns.", non_technical_desc: "Search packages.", example: "zypper se docker", sim_output: "S | Name          | Summary\n  | docker        | Tool to manage containers" },
+    { id: "zypper-patches", command: "sudo zypper patches", keywords: ["updates"], technical_desc: "Lists patch categories.", non_technical_desc: "Shows official patches.", example: "sudo zypper patches", sim_output: "Repository       | Name           | Category ..." },
+    { id: "yast", command: "sudo yast2", keywords: ["gui"], technical_desc: "YaST2 modules configure system via UI or CLI.", non_technical_desc: "Open SUSE control center.", example: "sudo yast2 lan", sim_output: "(YaST network module opens)" },
+];

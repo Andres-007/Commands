@@ -21,6 +21,12 @@
     </header>
 
     <main class="hub-container">
+        <h2 class="hub-section-title">Linux distributions</h2>
+        <p class="hub-section-lead">Open a folder to browse distros by family (APT, DNF, pacman...). Each distro links to commands for its package manager.</p>
+        <div id="linux-folders-root" class="cards-grid hub-folder-cards-grid"></div>
+
+        <h2 class="hub-section-title">Commands by topic</h2>
+        <p class="hub-section-lead">General tools and stacks — same card layout as before.</p>
         <div class="cards-grid">
             <!-- Git Card -->
             <div class="command-card">
@@ -380,10 +386,27 @@
         </div>
     </main>
 
-    <script src=" js/js.js"></script>
+    <div id="hub-folder-modal" class="hub-folder-modal" hidden aria-hidden="true">
+        <div class="hub-folder-modal-backdrop"></div>
+        <div class="hub-folder-modal-panel" role="dialog" aria-modal="true" aria-labelledby="hub-folder-modal-title">
+            <button type="button" class="hub-folder-modal-close" aria-label="Close">&times;</button>
+            <div class="hub-folder-modal-head">
+                <h2 id="hub-folder-modal-title"></h2>
+                <p id="hub-folder-modal-subtitle"></p>
+            </div>
+            <div class="hub-folder-modal-body">
+                <div id="hub-folder-modal-grid" class="cards-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>SIXNIE</p>
+    </footer>
+
+    <script src="js/linux-folders-data.js"></script>
+    <script src="js/hub-folders.js"></script>
+    <script src="js/js.js"></script>
 </body>
-<footer>
-    <p>SIXNIE</p>
-</footer>
 
 </html>

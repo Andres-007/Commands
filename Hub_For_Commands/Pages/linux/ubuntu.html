@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Commands</title>
+    <title>Ubuntu Commands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/stylegit.css">
-    <link rel="stylesheet" href="../css/visual-demos.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/stylegit.css">
+    <link rel="stylesheet" href="../../css/visual-demos.css">
 </head>
 
 <body>
     <div id="transition-overlay" class="transition-overlay"></div>
 
     <header class="hub-header">
-        <h1>JavaScript Commands</h1>
-        <p>Node, ESLint, Prettier, Jest, bundlers.</p>
+        <h1>Ubuntu Commands</h1>
+        <p>APT, Snap, and systemd — typical CLI workflows on Ubuntu.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
         </div>
     </header>
 
@@ -76,20 +76,19 @@
         <p>SIXNIE</p>
     </footer>
 
-    <script src="../js/js.js"></script>
-    <script src="../js/javascript-data.js"></script>
+    <script src="../../js/js.js"></script>
+    <script src="../../js/linux/apt-data.js"></script>
     <script>
         window.commandHubConfig = {
-            commands: javascriptCommandsData,
-            terminalTitle: "bash - JavaScript tooling",
-            welcomeHtml: "node and npx tooling.",
-            promptSymbol: "$",
+            commands: aptLinuxCommandsData,
+            terminalTitle: 'bash - Ubuntu / APT',
+            welcomeHtml: 'Ubuntu shell: try sudo apt update or pick a command.',
+            promptSymbol: '$',
             requiredPrefix: null,
-
         };
     </script>
-    <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../../js/visual-demos.js"></script>
+    <script src="../../js/command-hub.js"></script>
 </body>
 
 </html>

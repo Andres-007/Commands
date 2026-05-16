@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -27,7 +27,7 @@
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="text" id="command-search" placeholder="Search vite / npm scripts" autofocus>
+                <input type="search" id="command-search" placeholder="Search commands..." autofocus>
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
@@ -55,10 +55,13 @@
 
             <div class="terminal-container">
                 <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
+                    <div style="display: flex; gap: 6px;">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
                     <span class="term-title">terminal</span>
+                    <button id="bash-clear-btn" class="term-clear-btn" aria-label="Clear Terminal">Clear</button>
                 </div>
                 <div class="terminal-body" id="bash-output"></div>
                 <div class="terminal-input-wrapper">
