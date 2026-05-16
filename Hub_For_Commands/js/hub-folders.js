@@ -25,7 +25,7 @@
             return slice
                 .map(
                     (c) =>
-                        `<span class="hub-folder-preview-cell">${escapeHtml(c.glyph || '🐧')}</span>`
+                        `<span class="hub-folder-preview-cell">${c.icon ? `<i class="${c.icon}"></i>` : c.imgIcon ? `<img src="${c.imgIcon}" style="width:1rem;height:1rem;">` : escapeHtml(c.glyph || '🐧')}</span>`
                 )
                 .join('');
         }
@@ -42,7 +42,13 @@
                 const glyph = document.createElement('div');
                 glyph.className = 'hub-folder-inner-glyph';
                 glyph.setAttribute('aria-hidden', 'true');
-                glyph.textContent = c.glyph || '🐧';
+                if (c.icon) {
+                    glyph.innerHTML = `<i class="${c.icon}" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>`;
+                } else if (c.imgIcon) {
+                    glyph.innerHTML = `<img src="${c.imgIcon}" style="width: 4rem; height: 4rem; margin-bottom: 15px; display: block;">`;
+                } else {
+                    glyph.textContent = c.glyph || '🐧';
+                }
 
                 const h2 = document.createElement('h2');
                 h2.textContent = c.title;

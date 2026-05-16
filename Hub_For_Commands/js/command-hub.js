@@ -29,6 +29,17 @@
         const placeholderMsg = document.getElementById('detail-placeholder');
         const detailContent = document.getElementById('detail-content');
         const bashClearBtn = document.getElementById('bash-clear-btn');
+        let bashResetBtn = null;
+        if (bashClearBtn && bashClearBtn.parentNode) {
+            bashResetBtn = document.createElement('button');
+            bashResetBtn.className = 'term-clear-btn';
+            bashResetBtn.style.marginLeft = '8px';
+            bashResetBtn.style.backgroundColor = '#d32f2f'; // Red color to signify reset
+            bashResetBtn.style.color = '#fff';
+            bashResetBtn.textContent = 'Reset';
+            bashResetBtn.ariaLabel = 'Reset Environment';
+            bashClearBtn.parentNode.appendChild(bashResetBtn);
+        }
 
         const termTitleEl = document.querySelector('.term-title');
         if (termTitleEl && cfg.terminalTitle) {
@@ -161,8 +172,16 @@
             bashOutput.scrollTop = bashOutput.scrollHeight;
         }
 
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
+            const handleSearch = debounce((e) => {
                 const term = e.target.value.toLowerCase();
                 const filtered = cfg.commands.filter((cmd) => {
                     const kw = cmd.keywords || [];
@@ -175,7 +194,9 @@
                     );
                 });
                 renderList(filtered);
-            });
+            }, 150);
+
+            searchInput.addEventListener('input', handleSearch);
         }
 
         if (bashInput) {

@@ -46,20 +46,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('command-search');
     const commandList = document.getElementById('command-list');
 
+    // Debounce Utility
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
     if (searchInput && commandList) {
-        const listItems = commandList.getElementsByTagName('li');
+        // Cache DOM elements for list items
+        let listItemsArray = [];
+        
+        // Use MutationObserver or just fetch them on input if they are dynamic
+        // Since command-hub.js populates this dynamically, we can fetch them once on first search
+        // or just query them inside the debounced function for safety.
 
-        searchInput.addEventListener('input', (e) => {
+        const handleSearch = debounce((e) => {
             const searchTerm = e.target.value.toLowerCase();
+            const listItems = commandList.getElementsByTagName('li');
 
-            Array.from(listItems).forEach((item) => {
+            // Optimize by avoiding array creation on every keystroke if possible,
+            // but standard loop is fast enough if debounced.
+            for (let i = 0; i < listItems.length; i++) {
+                const item = listItems[i];
                 const text = item.textContent || item.innerText;
                 if (text.toLowerCase().includes(searchTerm)) {
                     item.style.display = '';
                 } else {
                     item.style.display = 'none';
                 }
-            });
-        });
+            }
+        }, 150); // 150ms debounce
+
+        searchInput.addEventListener('input', handleSearch);
     }
 });

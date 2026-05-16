@@ -13,6 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailContent = document.getElementById('detail-content');
     const bashClearBtn = document.getElementById('bash-clear-btn');
 
+    let bashResetBtn = null;
+    if (bashClearBtn && bashClearBtn.parentNode) {
+        bashResetBtn = document.createElement('button');
+        bashResetBtn.className = 'term-clear-btn';
+        bashResetBtn.style.marginLeft = '8px';
+        bashResetBtn.style.backgroundColor = '#d32f2f'; // Red color to signify reset
+        bashResetBtn.style.color = '#fff';
+        bashResetBtn.textContent = 'Reset';
+        bashResetBtn.ariaLabel = 'Reset Environment';
+        bashClearBtn.parentNode.appendChild(bashResetBtn);
+    }
+
     // Simulator State
     let isRepoInitialized = false;
 
@@ -85,7 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (bashClearBtn) {
         bashClearBtn.addEventListener('click', () => {
-            if (bashOutput) bashOutput.innerHTML = '';
+            bashOutput.innerHTML = '<div class="bash-line">bash$ </div>';
+            if (typeof window.syncVisualDemo === 'function') {
+                window.syncVisualDemo(null);
+            }
+        });
+    }
+
+    if (bashResetBtn) {
+        bashResetBtn.addEventListener('click', () => {
+            window.location.reload();
         });
     }
 
