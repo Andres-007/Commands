@@ -1,0 +1,10 @@
+const oracleCommandsData = [
+    { id: "ora-sqlplus", command: "sqlplus user/pass@//host:1521/ORCLPDB1", keywords: ["login"], technical_desc: "SQL*Plus connects via Oracle Net.", non_technical_desc: "Opens Oracle SQL shell.", example: "sqlplus hr/hr@localhost/ORCLPDB1", sim_output: "SQL>" },
+    { id: "ora-show-user", command: "SHOW USER", keywords: ["session"], technical_desc: "Displays current schema.", non_technical_desc: "Shows connected user.", example: "SHOW USER", sim_output: "USER is \"HR\"" },
+    { id: "ora-select", command: "SELECT * FROM employees WHERE ROWNUM <= 5;", keywords: ["query"], technical_desc: "SQL select with ROWNUM.", non_technical_desc: "Reads sample rows.", example: "SELECT employee_id,first_name FROM employees WHERE ROWNUM <= 5;", sim_output: "EMPLOYEE_ID FIRST_NAME\n----------- ----------\n100 Steven" },
+    { id: "ora-insert", command: "INSERT INTO t (...) VALUES (...);", keywords: ["write"], technical_desc: "DML insert.", non_technical_desc: "Adds rows.", example: "INSERT INTO logs(msg) VALUES ('ok');", sim_output: "1 row created." },
+    { id: "ora-commit", command: "COMMIT;", keywords: ["txn"], technical_desc: "Commits transaction.", non_technical_desc: "Saves changes.", example: "COMMIT;", sim_output: "Commit complete." },
+    { id: "ora-rollback", command: "ROLLBACK;", keywords: ["txn"], technical_desc: "Rolls back txn.", non_technical_desc: "Undoes changes.", example: "ROLLBACK;", sim_output: "Rollback complete." },
+    { id: "ora-describe", command: "DESC employees", keywords: ["columns"], technical_desc: "DESCRIBE shortcut.", non_technical_desc: "Shows column list.", example: "DESC employees", sim_output: "Name Null? Type\nEMPLOYEE_ID NOT NULL NUMBER(6)" },
+    { id: "ora-expdp", command: "expdp hr DIRECTORY=DATA_PUMP_DIR DUMPFILE=hr.dmp", keywords: ["backup"], technical_desc: "Data Pump export.", non_technical_desc: "Exports schema/data.", example: "expdp hr DIRECTORY=DATA_PUMP_DIR DUMPFILE=hr.dmp SCHEMAS=HR", sim_output: "Job \"HR\".\"SYS_EXPORT_SCHEMA_01\" successfully completed" },
+];

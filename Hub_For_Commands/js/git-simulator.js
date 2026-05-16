@@ -37,6 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
         detailTech.textContent = cmd.technical_desc;
         detailNonTech.textContent = cmd.non_technical_desc;
 
+        const vd = document.getElementById('visual-demo');
+        if (vd && typeof window.applyVisualDemo === 'function') {
+            if (cmd.visualDemo) window.applyVisualDemo(cmd.visualDemo, vd);
+            else if (typeof window.clearVisualDemo === 'function') window.clearVisualDemo(vd);
+            else {
+                vd.innerHTML = '';
+                vd.classList.add('visual-demo--empty');
+            }
+        }
+
         // Auto-fill bash input to encourage trying it
         bashInput.value = cmd.example;
         bashInput.focus();
@@ -110,6 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const matchedData = gitCommandsData.find(cmd => cmd.command.startsWith(`git ${mainAction}`));
         
         if (matchedData) {
+            const vd = document.getElementById('visual-demo');
+            if (vd && typeof window.applyVisualDemo === 'function') {
+                if (matchedData.visualDemo) window.applyVisualDemo(matchedData.visualDemo, vd);
+                else if (typeof window.clearVisualDemo === 'function') window.clearVisualDemo(vd);
+            }
             // Add a small delay for realism
             setTimeout(() => {
                 appendOutput(matchedData.sim_output || 'Command executed successfully.');

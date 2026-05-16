@@ -1,0 +1,14 @@
+const postgresqlCommandsData = [
+    { id: "pg-psql-connect", command: "psql postgresql://user:pass@localhost:5432/hub", keywords: ["login"], technical_desc: "libpq psql REPL.", non_technical_desc: "Opens Postgres shell.", example: "psql -h localhost -U postgres -d hub", sim_output: "hub=#" },
+    { id: "pg-list-db", command: "\\l", keywords: ["databases"], technical_desc: "Meta-command lists databases.", non_technical_desc: "Lists databases.", example: "\\l", sim_output: " hub | postgres | UTF8" },
+    { id: "pg-connect-db", command: "\\c hub", keywords: ["switch"], technical_desc: "Reconnect to DB.", non_technical_desc: "Connects to another DB.", example: "\\c hub", sim_output: "You are now connected to database \"hub\"." },
+    { id: "pg-list-tables", command: "\\dt", keywords: ["relations"], technical_desc: "Lists tables.", non_technical_desc: "Shows tables.", example: "\\dt", sim_output: " public | users | table | postgres" },
+    { id: "pg-describe", command: "\\d users", keywords: ["schema"], technical_desc: "Describes table.", non_technical_desc: "Shows columns/indexes.", example: "\\d users", sim_output: "Column | Type\n id     | bigint\n email  | text" },
+    { id: "pg-select", command: "SELECT * FROM users LIMIT 5;", keywords: ["query"], technical_desc: "SQL select.", non_technical_desc: "Reads rows.", example: "SELECT id,email FROM users LIMIT 5;", sim_output: " id | email\n----+---------------\n  1 | you@example.com" },
+    { id: "pg-insert", command: "INSERT INTO users(email) VALUES ('a@b.com');", keywords: ["write"], technical_desc: "Insert rows.", non_technical_desc: "Adds row.", example: "INSERT INTO users(email) VALUES ('a@b.com');", sim_output: "INSERT 0 1" },
+    { id: "pg-update", command: "UPDATE users SET active=TRUE WHERE id=1;", keywords: ["modify"], technical_desc: "Update rows.", non_technical_desc: "Updates row.", example: "UPDATE users SET active=TRUE WHERE id=1;", sim_output: "UPDATE 1" },
+    { id: "pg-delete", command: "DELETE FROM users WHERE id=99;", keywords: ["remove"], technical_desc: "Delete rows.", non_technical_desc: "Deletes rows.", example: "DELETE FROM users WHERE id=99;", sim_output: "DELETE 1" },
+    { id: "pg-explain", command: "EXPLAIN ANALYZE SELECT ...;", keywords: ["performance"], technical_desc: "Shows plan + timings.", non_technical_desc: "Explains query performance.", example: "EXPLAIN ANALYZE SELECT * FROM users WHERE email='x';", sim_output: "Index Scan using users_email_key ..." },
+    { id: "pg-vacuum", command: "VACUUM ANALYZE;", keywords: ["maintenance"], technical_desc: "Reclaims storage updates stats.", non_technical_desc: "Maintains table health.", example: "VACUUM ANALYZE users;", sim_output: "VACUUM" },
+    { id: "pg-pgdump", command: "pg_dump hub > hub.sql", keywords: ["backup"], technical_desc: "Logical backup.", non_technical_desc: "Exports SQL backup.", example: "pg_dump -Fc hub > hub.dump", sim_output: "(binary dump written)" },
+];

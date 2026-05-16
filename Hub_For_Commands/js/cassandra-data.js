@@ -1,0 +1,11 @@
+const cassandraCommandsData = [
+    { id: "cs-cqlsh", command: "cqlsh localhost 9042", keywords: ["shell"], technical_desc: "Native protocol shell.", non_technical_desc: "Opens Cassandra CQL shell.", example: "cqlsh localhost 9042", sim_output: "Connected to Test Cluster at localhost:9042.\ncqlsh>" },
+    { id: "cs-desc-keyspaces", command: "DESCRIBE KEYSPACES;", keywords: ["list"], technical_desc: "Lists keyspaces.", non_technical_desc: "Shows databases.", example: "DESCRIBE KEYSPACES;", sim_output: "hub  system  system_schema" },
+    { id: "cs-use", command: "USE hub;", keywords: ["keyspace"], technical_desc: "Sets keyspace.", non_technical_desc: "Selects keyspace.", example: "USE hub;", sim_output: "" },
+    { id: "cs-desc-tables", command: "DESCRIBE TABLES;", keywords: ["schema"], technical_desc: "Lists tables.", non_technical_desc: "Shows tables.", example: "DESCRIBE TABLES;", sim_output: "users events" },
+    { id: "cs-select", command: "SELECT * FROM users LIMIT 10;", keywords: ["query"], technical_desc: "CQL select (partition aware).", non_technical_desc: "Reads rows (needs partition key in real clusters).", example: "SELECT * FROM users WHERE id = uuid();", sim_output: " id | email\n----+---------------\n ... | you@example.com" },
+    { id: "cs-insert", command: "INSERT INTO users JSON '{...}';", keywords: ["write"], technical_desc: "JSON insert helper.", non_technical_desc: "Inserts document-like row.", example: "INSERT INTO users JSON '{\"id\":\"...\",\"email\":\"a@b.com\"}';", sim_output: "" },
+    { id: "cs-consistency", command: "CONSISTENCY QUORUM", keywords: ["tunable"], technical_desc: "Sets consistency level.", non_technical_desc: "Chooses read/write quorum.", example: "CONSISTENCY QUORUM", sim_output: "Consistency level set to QUORUM." },
+    { id: "cs-nodetool-status", command: "nodetool status", keywords: ["cluster"], technical_desc: "Shows ring state.", non_technical_desc: "Shows node health.", example: "nodetool status", sim_output: "Datacenter: dc1\nStatus=Up/Down\nUN  127.0.0.1  ...  rack1" },
+    { id: "cs-nodetool-repair", command: "nodetool repair", keywords: ["maintenance"], technical_desc: "Runs incremental repair.", non_technical_desc: "Repairs data replicas.", example: "nodetool repair", sim_output: "[repair #...] session completed successfully" },
+];

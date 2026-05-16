@@ -1,0 +1,9 @@
+const sqlserverCommandsData = [
+    { id: "mssql-sqlcmd", command: "sqlcmd -S localhost -d hub -U sa -P pass", keywords: ["cli"], technical_desc: "sqlcmd ODBC client.", non_technical_desc: "Runs T-SQL from terminal.", example: "sqlcmd -S localhost -d hub -U sa -Q \"SELECT 1\"", sim_output: "-----------\n          1\n(1 rows affected)" },
+    { id: "mssql-select-top", command: "SELECT TOP 5 * FROM dbo.Users;", keywords: ["query"], technical_desc: "TOP clause limits rows.", non_technical_desc: "Reads first rows.", example: "SELECT TOP 5 id,email FROM dbo.Users;", sim_output: "id email\n-- -----\n1 you@example.com" },
+    { id: "mssql-insert", command: "INSERT INTO dbo.Users(email) VALUES ('a@b.com');", keywords: ["write"], technical_desc: "INSERT DML.", non_technical_desc: "Adds row.", example: "INSERT INTO dbo.Users(email) VALUES ('a@b.com');", sim_output: "(1 rows affected)" },
+    { id: "mssql-update", command: "UPDATE dbo.Users SET active=1 WHERE id=1;", keywords: ["modify"], technical_desc: "UPDATE DML.", non_technical_desc: "Updates rows.", example: "UPDATE dbo.Users SET active=1 WHERE id=1;", sim_output: "(1 rows affected)" },
+    { id: "mssql-delete", command: "DELETE dbo.Users WHERE id=99;", keywords: ["remove"], technical_desc: "DELETE DML.", non_technical_desc: "Deletes rows.", example: "DELETE dbo.Users WHERE id=99;", sim_output: "(1 rows affected)" },
+    { id: "mssql-sp-who2", command: "EXEC sp_who2;", keywords: ["sessions"], technical_desc: "Shows SPIDs.", non_technical_desc: "Lists connections.", example: "EXEC sp_who2;", sim_output: "SPID Status Login HostName..." },
+    { id: "mssql-backup-db", command: "BACKUP DATABASE hub TO DISK='C:\\bak\\hub.bak';", keywords: ["backup"], technical_desc: "Native backup.", non_technical_desc: "Backs up database.", example: "BACKUP DATABASE hub TO DISK='C:\\bak\\hub.bak';", sim_output: "Processed 1200 pages ... BACKUP DATABASE successfully..." },
+];

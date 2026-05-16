@@ -1,0 +1,9 @@
+const vuejsCommandsData = [
+    { id: "vue-create", command: "npm create vue@latest", keywords: ["vite scaffold"], technical_desc: "Official Vue starter using create-vue templates.", non_technical_desc: "Creates a Vue 3 project.", example: "npm create vue@latest my-vue-app", sim_output: "✔ Project scaffolding complete.\ncd my-vue-app && npm install && npm run dev" },
+    { id: "vue-dev", command: "npm run dev", keywords: ["vite"], technical_desc: "Starts Vite dev server.", non_technical_desc: "Runs local dev with HMR.", example: "npm run dev", sim_output: "  VITE v5.x ready\n  ➜ http://localhost:5173/" },
+    { id: "vue-build", command: "npm run build", keywords: ["bundle"], technical_desc: "Produces production assets.", non_technical_desc: "Builds site for deployment.", example: "npm run build", sim_output: "✓ built in 4.21s\ndist/index.html" },
+    { id: "vue-preview", command: "npm run preview", keywords: ["serve"], technical_desc: "Serves dist preview.", non_technical_desc: "Tests production build locally.", example: "npm run preview", sim_output: "  ➜ Local: http://localhost:4173/" },
+    { id: "vue-test-vitest", command: "npm run test:unit", keywords: ["vitest"], technical_desc: "Runs Vitest suite.", non_technical_desc: "Runs Vue unit tests.", example: "npm run test:unit -- --run", sim_output: " ✓ tests passed (5)" },
+    { id: "vue-add-router", command: "npm install vue-router@4", keywords: ["spa"], technical_desc: "Adds official router.", non_technical_desc: "Adds multi-page navigation.", example: "npm install vue-router@4", sim_output: "added 3 packages" },
+    { id: "vue-add-pinia", command: "npm install pinia", keywords: ["state"], technical_desc: "Adds Pinia store.", non_technical_desc: "Adds global state management.", example: "npm install pinia", sim_output: "added 2 packages" },
+];

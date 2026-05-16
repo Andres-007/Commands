@@ -1,0 +1,9 @@
+const firebaseCommandsData = [
+    { id: "fb-login", command: "firebase login", keywords: ["auth"], technical_desc: "OAuth device login flow.", non_technical_desc: "Logs into Firebase CLI.", example: "firebase login", sim_output: "✔ Firebase CLI Login Successful" },
+    { id: "fb-init", command: "firebase init", keywords: ["scaffold"], technical_desc: "Interactive project setup.", non_technical_desc: "Connects folder to Firebase project.", example: "firebase init hosting", sim_output: "✔ Firebase initialization complete!" },
+    { id: "fb-emulators", command: "firebase emulators:start", keywords: ["local"], technical_desc: "Starts local emulators.", non_technical_desc: "Runs Firebase locally.", example: "firebase emulators:start", sim_output: "All emulators ready! Hosting Emulator running at http://127.0.0.1:5000" },
+    { id: "fb-deploy", command: "firebase deploy", keywords: ["publish"], technical_desc: "Uploads assets/rules/functions.", non_technical_desc: "Deploys to Firebase.", example: "firebase deploy --only hosting", sim_output: "✔ Deploy complete!\nHosting URL: https://yourapp.web.app" },
+    { id: "fb-deploy-functions", command: "firebase deploy --only functions", keywords: ["cloud functions"], technical_desc: "Deploys Cloud Functions Gen2.", non_technical_desc: "Uploads serverless functions.", example: "firebase deploy --only functions", sim_output: "✔ functions[api(us-central1)] Successful update operation." },
+    { id: "fb-functions-log", command: "firebase functions:log", keywords: ["logs"], technical_desc: "Reads Cloud Logging.", non_technical_desc: "Shows function logs.", example: "firebase functions:log --only api", sim_output: "2026-05-15T12:00:00Z I api: ..." },
+    { id: "fb-use", command: "firebase use prod", keywords: ["alias"], technical_desc: "Selects project alias.", non_technical_desc: "Switches active Firebase project.", example: "firebase use prod", sim_output: "Now using alias prod (hub-prod)" },
+];

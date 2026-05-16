@@ -69,7 +69,8 @@ const gitCommandsData = [
         technical_desc: "The utility for managing branch pointers. It allows users to list existing branches, create new ones at any commit, or delete merged branches. A branch is a lightweight movable pointer.",
         non_technical_desc: "Shows you the different parallel versions of your project. Imagine it as different timelines where you can try new things without breaking the main version.",
         example: "git branch",
-        sim_output: "* main\n  feature-login\n  bugfix-header"
+        sim_output: "* main\n  feature-login\n  bugfix-header",
+        visualDemo: "git-branches"
     },
     {
         id: "git-switch",
@@ -78,7 +79,8 @@ const gitCommandsData = [
         technical_desc: "A modern, intent-based command introduced to handle branch switching specifically. It updates the working tree and HEAD to match the specified branch.",
         non_technical_desc: "This lets you jump between the different parallel versions (branches) of your project. Like switching from the 'main' timeline to the 'feature-login' timeline.",
         example: "git switch feature-login",
-        sim_output: "Switched to branch 'feature-login'"
+        sim_output: "Switched to branch 'feature-login'",
+        visualDemo: "git-branches"
     },
     {
         id: "git-checkout",
@@ -87,7 +89,8 @@ const gitCommandsData = [
         technical_desc: "Historically the most versatile tool for context switching and file restoration. Overloaded to switch branches, check out tags, or restore files.",
         non_technical_desc: "The older way to switch between different timelines. It can also be used to undo changes to a file.",
         example: "git checkout feature-login",
-        sim_output: "Switched to branch 'feature-login'"
+        sim_output: "Switched to branch 'feature-login'",
+        visualDemo: "git-branches"
     },
     {
         id: "git-merge",
