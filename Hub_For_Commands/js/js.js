@@ -57,16 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
             headerH1.appendChild(span);
         }
         const text = span.textContent;
-        span.innerHTML = '<span>|</span>'; // Clear and add cursor
-        const cursor = span.querySelector('span');
+        span.innerHTML = '<span class="typewriter-cursor"></span>'; // Clear and add cursor with blinking style
+        const cursor = span.querySelector('.typewriter-cursor');
         
         let i = 0;
+        cursor.style.display = 'none'; // Ocultar el cursor durante la generación de las letras
         function typeWriter() {
             if (i < text.length) {
                 const textNode = document.createTextNode(text.charAt(i));
                 span.insertBefore(textNode, cursor);
                 i++;
                 setTimeout(typeWriter, 100);
+            } else {
+                cursor.style.display = 'inline-block'; // Mostrar el cursor al finalizar la generación
             }
         }
         setTimeout(typeWriter, 300); // Small delay before typing

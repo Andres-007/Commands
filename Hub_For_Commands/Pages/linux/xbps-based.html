@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Void Linux Commands</title>
+    <title>XBPS-based distros Commands</title>
+    <meta name="description" content="Interactive XBPS-based distros command reference with simulated terminal. Search, learn, and practice xbps-based distros commands with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -11,31 +13,47 @@
     <link rel="stylesheet" href="../../css/stylegit.css">
     <link rel="stylesheet" href="../../css/visual-demos.css">
 </head>
+
 <body>
     <div id="transition-overlay" class="transition-overlay"></div>
+
     <header class="hub-header">
-        <h1>Void Linux</h1>
-        <p>XBPS packages + runit services.</p>
+        <h1>XBPS-based distros Commands</h1>
+        <p>xbps for Void Linux.</p>
         <div style="margin-top: 20px;">
-            <a href="../../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
         </div>
     </header>
+
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search commands..." autofocus>
+                <input type="search" id="command-search" placeholder="Search xbps-install / remove" autofocus>
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
+
         <section class="git-content">
-            <div id="detail-placeholder" class="placeholder-msg"><p>Select a command to view details and try it in the terminal.</p></div>
+            <div id="detail-placeholder" class="placeholder-msg">
+                <p>Select a command to view details and try it in the terminal.</p>
+            </div>
+
             <div id="detail-content" class="detail-card" style="display: none;">
                 <h2 id="detail-title" class="cmd-title">Command</h2>
-                <div class="code-block"><code id="detail-command">example</code></div>
-                <div class="explanation-box non-tech"><span class="badge badge-nontech">Plain English</span><p id="detail-nontech"></p></div>
-                <div class="explanation-box tech"><span class="badge badge-tech">Technical</span><p id="detail-tech"></p></div>
+                <div class="code-block">
+                    <code id="detail-command">example</code>
+                </div>
+                <div class="explanation-box non-tech">
+                    <span class="badge badge-nontech">Plain English</span>
+                    <p id="detail-nontech"></p>
+                </div>
+                <div class="explanation-box tech">
+                    <span class="badge badge-tech">Technical</span>
+                    <p id="detail-tech"></p>
+                </div>
                 <div id="visual-demo" class="visual-demo visual-demo--empty" aria-live="polite"></div>
             </div>
+
             <div class="terminal-container">
                 <div class="terminal-header">
                     <div style="display: flex; gap: 6px;">
@@ -54,19 +72,25 @@
             </div>
         </section>
     </main>
-    <footer class="site-footer"><p>SIXNIE</p></footer>
+
+    <footer class="site-footer">
+        <p>SIXNIE</p>
+    </footer>
+
     <script src="../../js/js.js"></script>
     <script src="../../js/linux/xbps-data.js"></script>
     <script>
         window.commandHubConfig = {
-            commands: xbpsLinuxCommandsData,
-            terminalTitle: 'bash - XBPS',
-            welcomeHtml: 'Void: xbps-query -Rs or sudo xbps-install -Su.',
+            commands: xbpsCommandsData,
+            shellMode: 'bash',
+            terminalTitle: 'bash - xbps',
+            welcomeHtml: 'Void xbps terminal. Try xbps-install <pkg>.',
             promptSymbol: '$',
             requiredPrefix: null,
         };
     </script>
     <script src="../../js/visual-demos.js"></script>
-    <script src="../../js/command-hub.js"></script>
+    <script src="../../js/terminal-engine.js"></script>
 </body>
+
 </html>

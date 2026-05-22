@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue.js Commands</title>
+    <meta name="description" content="Interactive Vue.js command reference with simulated terminal. Search, learn, and practice vue.js commands with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -20,14 +21,14 @@
         <h1>Vue.js Commands</h1>
         <p>create-vue, Vite scripts, Pinia/Router.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
         </div>
     </header>
 
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search commands..." autofocus>
+                <input type="search" id="command-search" placeholder="Search vue npm scripts" autofocus>
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
@@ -81,15 +82,15 @@
     <script>
         window.commandHubConfig = {
             commands: vuejsCommandsData,
-            terminalTitle: "bash - Vue.js toolchain",
-            welcomeHtml: "Vue 3 via npm create vue and Vite scripts.",
-            promptSymbol: "$",
+            shellMode: 'bash',
+            terminalTitle: 'bash - Vue.js toolchain',
+            welcomeHtml: 'Vue 3 via npm create vue and Vite scripts.',
+            promptSymbol: '$',
             requiredPrefix: null,
-
         };
     </script>
     <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../js/terminal-engine.js"></script>
 </body>
 
 </html>
