@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bash Commands</title>
+    <meta name="description" content="Interactive Bash command reference with simulated terminal. Search, learn, and practice bash commands with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
         <h1>Bash Commands</h1>
         <p>GNU/Linux shell essentials: files, processes, networking.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
         </div>
     </header>
 
@@ -60,7 +61,7 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <span class="term-title">terminal</span>
+                    <span class="term-title">bash - interactive reference</span>
                     <button id="bash-clear-btn" class="term-clear-btn" aria-label="Clear Terminal">Clear</button>
                 </div>
                 <div class="terminal-body" id="bash-output"></div>
@@ -81,18 +82,15 @@
     <script>
         window.commandHubConfig = {
             commands: bashCommandsData,
-            terminalTitle: "bash - interactive reference",
-            welcomeHtml: "Simulated bash. Try ls -la or pick from the list.",
-            promptSymbol: "$",
+            shellMode: 'bash',
+            terminalTitle: 'bash - interactive reference',
+            welcomeHtml: 'Simulated bash. Try ls -la or pick from the list.',
+            promptSymbol: '$',
             requiredPrefix: null,
-                formatUnknown: function (input) {
-                    var t = input.split(/\s+/)[0];
-                    return 'bash: ' + t + ': command not found';
-                },
         };
     </script>
     <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../js/terminal-engine.js"></script>
 </body>
 
 </html>

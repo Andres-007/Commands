@@ -1,4 +1,6 @@
-/* Specific styles for Git page interactive hub */
+/* ================================================================
+   Hub of Commands — Terminal Page Styles (Dark Theme)
+   ================================================================ */
 
 .git-layout {
     display: grid;
@@ -9,21 +11,17 @@
 }
 
 @media (max-width: 900px) {
-    .git-layout {
-        grid-template-columns: 1fr;
-    }
+    .git-layout { grid-template-columns: 1fr; }
 }
 
-/* --- Left Sidebar (Search & List) --- */
+/* --- Sidebar --- */
 .git-sidebar {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-#search-container {
-    width: 100%;
-}
+#search-container { width: 100%; }
 
 #command-search {
     width: 100%;
@@ -49,29 +47,14 @@
     gap: 10px;
     list-style: none;
     padding: 0;
-    padding-right: 10px; /* Prevent clipping during hover transform */
+    padding-right: 10px;
     margin: 0;
-    height: calc(100vh - 200px); /* Extend list to fill screen height */
+    height: calc(100vh - 200px);
     overflow-y: auto;
-    overflow-x: hidden; /* Hide horizontal scrollbar that causes blinking */
+    overflow-x: hidden;
 }
 
-/* Custom scrollbars for dark theme */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
+/* --- Command Items --- */
 .command-item {
     padding: 15px;
     background-color: #0a0a0a;
@@ -101,7 +84,7 @@
     background-color: #222;
 }
 
-
+/* --- Content Area --- */
 .git-content {
     display: flex;
     flex-direction: column;
@@ -118,12 +101,13 @@
     color: #888;
 }
 
+/* --- Detail Card --- */
 .detail-card {
     background-color: #111;
     border: 1px solid #333;
     border-radius: 10px;
     padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .cmd-title {
@@ -161,6 +145,7 @@
     font-size: 0.95rem;
 }
 
+/* --- Badges --- */
 .badge {
     display: inline-block;
     padding: 4px 10px;
@@ -183,14 +168,13 @@
     border: 1px solid rgba(255, 140, 0, 0.4);
 }
 
-
-/* --- Interactive Terminal --- */
+/* --- Terminal --- */
 .terminal-container {
     background-color: #0d0d0d;
     border-radius: 8px;
     border: 1px solid #333;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -231,9 +215,9 @@
     display: inline-block;
 }
 
-.dot.red { background-color: #ff5f56; }
+.dot.red    { background-color: #ff5f56; }
 .dot.yellow { background-color: #ffbd2e; }
-.dot.green { background-color: #27c93f; }
+.dot.green  { background-color: #27c93f; }
 
 .term-title {
     color: #aaa;

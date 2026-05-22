@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Commands</title>
-    <meta name="description" content="Interactive Git command reference with simulated terminal. Search, learn, and practice git commands with animated visual demos.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/stylegit.css">
-    <link rel="stylesheet" href="../css/visual-demos.css">
-</head>
-
-<body>
-    <!-- Page Transition Overlay -->
-    <div id="transition-overlay" class="transition-overlay"></div>
-
-    <header class="hub-header">
-        <h1>Git Commands</h1>
-        <p>Essential commands for version control and repository management.</p>
-        <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">← Back to Hub</a>
-        </div>
-    </header>
-
     <main class="hub-container git-layout">
         <!-- Left Column: Search & List -->
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search (e.g., upload, git push, bash workflow)..." autofocus>
+                <input type="search" id="command-search" placeholder="Search commands..." autofocus>
             </div>
             <ul id="command-list" class="command-list">
                 <!-- Dynamically populated by JS -->
@@ -46,7 +18,7 @@
             <div id="detail-content" class="detail-card" style="display: none;">
                 <h2 id="detail-title" class="cmd-title">Command</h2>
                 <div class="code-block">
-                    <code id="detail-command">git example</code>
+                    <code id="detail-command">example</code>
                 </div>
 
                 <div class="explanation-box non-tech">
@@ -69,34 +41,16 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <span class="term-title">bash - Git CLI simulator</span>
+                    <span class="term-title">{{TERMINAL_TITLE}}</span>
                     <button id="bash-clear-btn" class="term-clear-btn" aria-label="Clear Terminal">Clear</button>
                 </div>
                 <div class="terminal-body" id="bash-output">
-                    <div class="bash-line">Bash-style prompt for Git. Try typing git init to start.</div>
+                    <div class="bash-line">{{WELCOME_MSG}}</div>
                 </div>
                 <div class="terminal-input-wrapper">
-                    <span class="prompt">$</span>
+                    <span class="prompt">{{PROMPT}}</span>
                     <input type="text" id="bash-input" class="bash-input" autocomplete="off" spellcheck="false">
                 </div>
             </div>
         </section>
     </main>
-
-    <script src="../js/js.js"></script>
-    <script src="../js/git-data.js"></script>
-    <script>
-        window.commandHubConfig = {
-            commands: gitCommandsData,
-            shellMode: 'bash',
-            terminalTitle: 'bash - Git CLI simulator',
-            welcomeHtml: 'Bash-style prompt for Git. Try typing git init to start.',
-            promptSymbol: '$',
-            requiredPrefix: null,
-        };
-    </script>
-    <script src="../js/visual-demos.js"></script>
-    <script src="../js/terminal-engine.js"></script>
-</body>
-
-</html>

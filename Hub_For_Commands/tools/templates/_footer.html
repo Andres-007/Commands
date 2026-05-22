@@ -1,0 +1,14 @@
+    <script src="{{JS_PREFIX}}js/js.js"></script>
+    <script src="{{DATA_SCRIPT}}"></script>
+    <script>
+        window.commandHubConfig = {
+            commands: {{DATA_VAR}},
+            shellMode: '{{SHELL_MODE}}',
+            terminalTitle: '{{TERMINAL_TITLE}}',
+            welcomeHtml: '{{WELCOME_MSG}}',
+            promptSymbol: '{{PROMPT}}',
+            requiredPrefix: {{REQUIRED_PREFIX}},
+        };
+    </script>
+    <script src="{{JS_PREFIX}}js/visual-demos.js"></script>
+    <script src="{{JS_PREFIX}}js/terminal-engine.js"></script>

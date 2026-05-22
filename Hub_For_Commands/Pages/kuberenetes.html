@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kubernetes Commands</title>
+    <meta name="description" content="Interactive Kubernetes command reference with simulated terminal. Search, learn, and practice kubectl commands with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -20,14 +21,14 @@
         <h1>Kubernetes Commands</h1>
         <p>kubectl: pods, deployments, services, debugging.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
         </div>
     </header>
 
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search commands...">
+                <input type="search" id="command-search" placeholder="Search kubectl (get pods, logs...)" autofocus>
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
@@ -60,7 +61,7 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <span class="term-title">terminal</span>
+                    <span class="term-title">bash - kubectl</span>
                     <button id="bash-clear-btn" class="term-clear-btn" aria-label="Clear Terminal">Clear</button>
                 </div>
                 <div class="terminal-body" id="bash-output"></div>
@@ -81,15 +82,15 @@
     <script>
         window.commandHubConfig = {
             commands: kubectlCommandsData,
-            terminalTitle: "bash - kubectl",
-            welcomeHtml: "Commands must start with kubectl.",
-            promptSymbol: "$",
+            shellMode: 'bash',
+            terminalTitle: 'bash - kubectl',
+            welcomeHtml: 'Commands must start with kubectl.',
+            promptSymbol: '$',
             requiredPrefix: 'kubectl ',
-
         };
     </script>
     <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../js/terminal-engine.js"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docker Commands</title>
+    <meta name="description" content="Interactive Docker command reference with simulated terminal. Search, learn, and practice docker commands with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -20,14 +21,14 @@
         <h1>Docker Commands</h1>
         <p>Containers and images: build, run, compose.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
         </div>
     </header>
 
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search commands..." autofocus>
+                <input type="search" id="command-search" placeholder="Search docker (ps, compose...)" autofocus>
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
@@ -60,7 +61,7 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <span class="term-title">terminal</span>
+                    <span class="term-title">bash - Docker CLI</span>
                     <button id="bash-clear-btn" class="term-clear-btn" aria-label="Clear Terminal">Clear</button>
                 </div>
                 <div class="terminal-body" id="bash-output"></div>
@@ -81,15 +82,15 @@
     <script>
         window.commandHubConfig = {
             commands: dockerCommandsData,
-            terminalTitle: "bash - Docker CLI",
-            welcomeHtml: "Type Docker CLI commands starting with docker.",
-            promptSymbol: "$",
+            shellMode: 'bash',
+            terminalTitle: 'bash - Docker CLI',
+            welcomeHtml: 'Type Docker CLI commands starting with docker.',
+            promptSymbol: '$',
             requiredPrefix: 'docker ',
-
         };
     </script>
     <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../js/terminal-engine.js"></script>
 </body>
 
 </html>

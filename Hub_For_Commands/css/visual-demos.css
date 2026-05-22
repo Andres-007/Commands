@@ -1,5 +1,9 @@
-/* Animated conceptual demos for command hub (dark UI) */
+/* ===================================================================
+ * Animated conceptual demos for command hub (dark UI)
+ * Covers: CSS box model, Git, Docker, SQL, K8s, Linux, Misc, Tier 2
+ * =================================================================== */
 
+/* --- Base demo container --- */
 .visual-demo {
     margin-top: 1.25rem;
     padding: 1rem 1.25rem;
@@ -34,7 +38,68 @@
     font-weight: 600;
 }
 
-/* --- Shared box-model diagram --- */
+/* ===================================================================
+ * SHARED ANIMATION KEYFRAMES
+ * =================================================================== */
+
+@keyframes vd-fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes vd-fadeInRight {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes vd-slideUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vd-scaleIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes vd-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+    50%      { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+}
+
+@keyframes vd-blink {
+    50% { opacity: 0; }
+}
+
+/* Shared utility classes */
+.vd-animate-fadein {
+    opacity: 0;
+    animation: vd-fadeIn 0.5s ease forwards;
+}
+
+.vd-animate-fadein-delay {
+    opacity: 0;
+    animation: vd-fadeIn 0.5s ease 0.4s forwards;
+}
+
+.vd-animate-slideup {
+    opacity: 0;
+    animation: vd-slideUp 0.5s ease 0.4s forwards;
+}
+
+.vd-animate-scalein {
+    opacity: 0;
+    animation: vd-scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards;
+}
+
+.vd-animate-pulse {
+    animation: vd-pulse 2s ease-in-out infinite;
+}
+
+/* ===================================================================
+ * CSS BOX MODEL
+ * =================================================================== */
+
 .vd-stage {
     display: flex;
     flex-direction: column;
@@ -63,52 +128,38 @@
     border-radius: 2px;
 }
 
-.vd-dot--margin { background: #5c6bc0; box-shadow: 0 0 8px rgba(92, 107, 198, 0.45); }
-.vd-dot--border { background: #ff9800; box-shadow: 0 0 8px rgba(255, 152, 0, 0.4); }
+.vd-dot--margin  { background: #5c6bc0; box-shadow: 0 0 8px rgba(92, 107, 198, 0.45); }
+.vd-dot--border  { background: #ff9800; box-shadow: 0 0 8px rgba(255, 152, 0, 0.4); }
 .vd-dot--padding { background: #26c6da; box-shadow: 0 0 8px rgba(38, 198, 218, 0.4); }
 .vd-dot--content { background: #e0e0e0; }
 
 .vd-margin {
     position: relative;
-    background: repeating-linear-gradient(
-        -45deg,
-        rgba(92, 107, 198, 0.12),
-        rgba(92, 107, 198, 0.12) 6px,
-        rgba(92, 107, 198, 0.05) 6px,
-        rgba(92, 107, 198, 0.05) 12px
-    );
+    background: repeating-linear-gradient(-45deg,
+        rgba(92,107,198,.12), rgba(92,107,198,.12) 6px,
+        rgba(92,107,198,.05) 6px, rgba(92,107,198,.05) 12px);
     border-radius: 8px;
     padding: 6px;
 }
 
-.vd-margin.vd-animate-margin {
-    animation: vd-margin-pulse 3s ease-in-out infinite;
-}
+.vd-margin.vd-animate-margin { animation: vd-margin-pulse 3s ease-in-out infinite; }
 
 .vd-border {
     border: 3px solid #ff9800;
     border-radius: 6px;
-    background: rgba(255, 152, 0, 0.06);
+    background: rgba(255,152,0,.06);
 }
 
-.vd-border.vd-animate-border {
-    animation: vd-border-pulse 2.8s ease-in-out infinite;
-}
+.vd-border.vd-animate-border { animation: vd-border-pulse 2.8s ease-in-out infinite; }
 
 .vd-padding {
     border-radius: 4px;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(38, 198, 218, 0.14),
-        rgba(38, 198, 218, 0.14) 4px,
-        rgba(38, 198, 218, 0.06) 4px,
-        rgba(38, 198, 218, 0.06) 8px
-    );
+    background: repeating-linear-gradient(0deg,
+        rgba(38,198,218,.14), rgba(38,198,218,.14) 4px,
+        rgba(38,198,218,.06) 4px, rgba(38,198,218,.06) 8px);
 }
 
-.vd-padding.vd-animate-padding {
-    animation: vd-padding-pulse 2.6s ease-in-out infinite;
-}
+.vd-padding.vd-animate-padding { animation: vd-padding-pulse 2.6s ease-in-out infinite; }
 
 .vd-content {
     min-width: 120px;
@@ -122,36 +173,16 @@
     font-family: ui-monospace, monospace;
     font-size: 0.8rem;
     font-weight: 600;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
-@keyframes vd-padding-pulse {
-    0%, 100% { padding: 8px; }
-    50% { padding: 28px; }
-}
-
-@keyframes vd-margin-pulse {
-    0%, 100% { padding: 6px; }
-    50% { padding: 22px; }
-}
-
-@keyframes vd-border-pulse {
-    0%, 100% { border-width: 3px; }
-    50% { border-width: 10px; }
-}
+@keyframes vd-padding-pulse { 0%,100% { padding:8px } 50% { padding:28px } }
+@keyframes vd-margin-pulse  { 0%,100% { padding:6px } 50% { padding:22px } }
+@keyframes vd-border-pulse  { 0%,100% { border-width:3px } 50% { border-width:10px } }
 
 /* Box-sizing compare */
-.vd-boxsize-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-@media (max-width: 520px) {
-    .vd-boxsize-row {
-        grid-template-columns: 1fr;
-    }
-}
+.vd-boxsize-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width:520px) { .vd-boxsize-row { grid-template-columns: 1fr; } }
 
 .vd-boxsize-card {
     padding: 10px;
@@ -160,12 +191,7 @@
     background: #0a0a0a;
 }
 
-.vd-boxsize-card h4 {
-    margin: 0 0 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #aaa;
-}
+.vd-boxsize-card h4 { margin: 0 0 8px; font-size: 0.75rem; font-weight: 600; color: #aaa; }
 
 .vd-track {
     height: 72px;
@@ -178,49 +204,35 @@
 .vd-track::after {
     content: '';
     position: absolute;
-    left: 12px;
-    right: 12px;
-    top: 50%;
-    height: 2px;
+    left: 12px; right: 12px; top: 50%; height: 2px;
     background: linear-gradient(90deg, transparent, #444 15%, #444 85%, transparent);
     transform: translateY(-50%);
 }
 
 .vd-sample {
     position: absolute;
-    left: 12px;
-    top: 50%;
+    left: 12px; top: 50%;
     transform: translateY(-50%);
     height: 36px;
     width: min(calc(100% - 24px), 140px);
-    background: rgba(38, 198, 218, 0.25);
+    background: rgba(38,198,218,.25);
     border: 4px solid #26c6da;
     border-radius: 4px;
     animation: vd-box-grow 3s ease-in-out infinite;
 }
 
-.vd-sample--border-box {
-    box-sizing: border-box;
-}
-
-.vd-sample--content-box {
-    box-sizing: content-box;
-}
+.vd-sample--border-box  { box-sizing: border-box; }
+.vd-sample--content-box { box-sizing: content-box; }
 
 @keyframes vd-box-grow {
-    0%, 100% {
-        width: min(calc(100% - 24px), 100px);
-        border-width: 4px;
-        padding: 0;
-    }
-    50% {
-        width: min(calc(100% - 24px), 100px);
-        border-width: 12px;
-        padding: 10px;
-    }
+    0%,100% { width:min(calc(100% - 24px),100px); border-width:4px; padding:0; }
+    50%     { width:min(calc(100% - 24px),100px); border-width:12px; padding:10px; }
 }
 
-/* Bash ls */
+/* ===================================================================
+ * BASH LS GRID
+ * =================================================================== */
+
 .vd-ls-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
@@ -245,32 +257,27 @@
     animation: vd-file-in 3.6s ease-in-out infinite;
 }
 
-.vd-file:nth-child(1) { animation-delay: 0s; color: #81d4fa; }
-.vd-file:nth-child(2) { animation-delay: 0.15s; color: #ffb74d; }
-.vd-file:nth-child(3) { animation-delay: 0.3s; color: #a5d6a7; }
-.vd-file:nth-child(4) { animation-delay: 0.45s; color: #ce93d8; }
-.vd-file:nth-child(5) { animation-delay: 0.6s; color: #90caf9; }
-.vd-file:nth-child(6) { animation-delay: 0.75s; color: #ffcc80; }
+.vd-file:nth-child(1) { animation-delay:0s;    color:#81d4fa; }
+.vd-file:nth-child(2) { animation-delay:0.15s; color:#ffb74d; }
+.vd-file:nth-child(3) { animation-delay:0.3s;  color:#a5d6a7; }
+.vd-file:nth-child(4) { animation-delay:0.45s; color:#ce93d8; }
+.vd-file:nth-child(5) { animation-delay:0.6s;  color:#90caf9; }
+.vd-file:nth-child(6) { animation-delay:0.75s; color:#ffcc80; }
 
-.vd-file i {
-    font-style: normal;
-    font-size: 1.1rem;
-    margin-bottom: 2px;
-}
+.vd-file i { font-style: normal; font-size: 1.1rem; margin-bottom: 2px; }
 
 @keyframes vd-file-in {
-    0%, 100% { opacity: 0.35; transform: translateY(6px) scale(0.96); }
-    15%, 35% { opacity: 1; transform: translateY(0) scale(1); }
-    50% { opacity: 1; transform: translateY(0) scale(1); }
-    65% { opacity: 0.35; transform: translateY(6px) scale(0.96); }
+    0%,100% { opacity:0.35; transform:translateY(6px) scale(0.96); }
+    15%,35% { opacity:1;    transform:translateY(0) scale(1); }
+    50%     { opacity:1;    transform:translateY(0) scale(1); }
+    65%     { opacity:0.35; transform:translateY(6px) scale(0.96); }
 }
 
-/* Git branches */
-.vd-git-branches {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+/* ===================================================================
+ * GIT BRANCHES
+ * =================================================================== */
+
+.vd-git-branches { display: flex; flex-direction: column; gap: 10px; }
 
 .vd-branch-lane {
     display: flex;
@@ -280,21 +287,13 @@
     font-family: ui-monospace, monospace;
 }
 
-.vd-branch-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
+.vd-branch-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
-.vd-branch-dot.main { background: #42a5f5; box-shadow: 0 0 10px rgba(66, 165, 245, 0.5); }
-.vd-branch-dot.feature { background: #ab47bc; box-shadow: 0 0 10px rgba(171, 71, 188, 0.45); }
-.vd-branch-dot.hotfix { background: #ff7043; }
+.vd-branch-dot.main    { background:#42a5f5; box-shadow:0 0 10px rgba(66,165,245,.5); }
+.vd-branch-dot.feature { background:#ab47bc; box-shadow:0 0 10px rgba(171,71,188,.45); }
+.vd-branch-dot.hotfix  { background:#ff7043; }
 
-.vd-branch-label {
-    color: #ccc;
-    min-width: 72px;
-}
+.vd-branch-label { color: #ccc; min-width: 72px; }
 
 .vd-branch-track {
     flex: 1;
@@ -308,20 +307,996 @@
 .vd-head {
     position: absolute;
     top: 50%;
-    width: 14px;
-    height: 14px;
+    width: 14px; height: 14px;
     background: #fff;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 12px rgba(255,255,255,.35);
     animation: vd-head-move 4s ease-in-out infinite;
 }
 
 @keyframes vd-head-move {
-    0%, 100% { left: 18%; }
-    33% { left: 55%; }
-    66% { left: 82%; }
+    0%,100% { left:18%; } 33% { left:55%; } 66% { left:82%; }
 }
+
+/* ===================================================================
+ * FLOW ROW (generic arrow-connected boxes)
+ * =================================================================== */
+
+.vd-flow-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-flow-box {
+    padding: 12px 16px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.vd-flow-box--result {
+    border-color: #4caf50;
+    color: #4caf50;
+}
+
+.vd-flow-arrow {
+    font-size: 1.4rem;
+    color: #4caf50;
+}
+
+.vd-flow-label {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+/* ===================================================================
+ * STAGING ROW (git add / commit)
+ * =================================================================== */
+
+.vd-staging-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    text-align: center;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.vd-staging-zone { flex: 1; }
+
+.vd-staging-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.vd-staging-file {
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.82rem;
+    margin-top: 8px;
+}
+
+.vd-staging-file--source {
+    background: #333;
+    color: #aaa;
+    opacity: 0.6;
+}
+
+.vd-staging-file--staged {
+    background: #4caf50;
+    color: #fff;
+}
+
+.vd-staging-arrow {
+    align-self: center;
+    font-size: 1.5rem;
+    color: #4caf50;
+    flex-shrink: 0;
+}
+
+.vd-commit-bubble {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #f44336;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 0;
+    font-family: monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* ===================================================================
+ * TRANSFER ROW (git push/pull, network, auth)
+ * =================================================================== */
+
+.vd-transfer-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-transfer-endpoint {
+    text-align: center;
+    min-width: 80px;
+}
+
+.vd-transfer-icon { font-size: 2rem; margin-bottom: 4px; }
+.vd-transfer-label { font-size: 0.72rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.1em; }
+
+.vd-commit-dots { display: flex; gap: 4px; justify-content: center; margin-top: 6px; }
+.vd-cdot { width: 10px; height: 10px; border-radius: 50%; background: #42a5f5; }
+
+.vd-transfer-pipe {
+    flex: 1;
+    height: 4px;
+    position: relative;
+    margin: 0 8px;
+}
+
+.vd-transfer-line {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #333 0%, #555 50%, #333 100%);
+    border-radius: 2px;
+}
+
+.vd-transfer-packet {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+@keyframes vd-fly-right {
+    0%   { left: 0;   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { left: 90%; opacity: 0; }
+}
+
+@keyframes vd-fly-left {
+    0%   { right: 0;   opacity: 0; left: auto; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { right: 90%; opacity: 0; left: auto; }
+}
+
+.vd-animate-fly-right { animation: vd-fly-right 2s ease-in-out infinite; }
+.vd-animate-fly-left  { animation: vd-fly-left  2s ease-in-out infinite; }
+
+/* ===================================================================
+ * GIT MERGE SVG
+ * =================================================================== */
+
+.vd-merge-diagram {
+    padding: 10px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-merge-svg { width: 100%; max-width: 300px; display: block; margin: 0 auto; }
+
+.vd-merge-line { stroke-width: 2; fill: none; }
+.vd-merge-line--main     { stroke: #42a5f5; }
+.vd-merge-line--branch   { stroke: #ab47bc; }
+.vd-merge-line--converge { stroke: #ab47bc; stroke-dasharray: 4 3; }
+
+.vd-merge-node { stroke: none; }
+.vd-merge-node--main   { fill: #42a5f5; }
+.vd-merge-node--branch { fill: #ab47bc; }
+.vd-merge-node--merge  { fill: #fff; }
+
+.vd-merge-text { fill: #888; font-size: 10px; text-anchor: middle; font-family: ui-monospace, monospace; }
+
+/* ===================================================================
+ * GIT STASH
+ * =================================================================== */
+
+.vd-stash-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-stash-files { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.vd-stash-item {
+    padding: 8px 12px;
+    background: #333;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+@keyframes vd-stash-slide {
+    0%   { opacity: 1; transform: translateY(0); }
+    60%  { opacity: 0.4; transform: translateY(20px); }
+    100% { opacity: 0.2; transform: translateY(30px) scale(0.95); }
+}
+
+.vd-animate-stash-slide {
+    animation: vd-stash-slide 1.5s ease forwards;
+}
+
+.vd-stash-drawer {
+    padding: 10px 14px;
+    background: #1a1a1a;
+    border: 1px dashed #555;
+    border-radius: 6px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.82rem;
+    color: #aaa;
+}
+
+/* ===================================================================
+ * GIT REBASE
+ * =================================================================== */
+
+.vd-rebase-scene {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-rebase-before, .vd-rebase-after {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.vd-rebase-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666;
+}
+
+.vd-rebase-track {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.vd-rebase-track--branch { margin-left: 28px; }
+
+.vd-rebase-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.vd-rebase-dot.main    { background: #42a5f5; }
+.vd-rebase-dot.feature { background: #ab47bc; }
+
+.vd-rebase-arrow {
+    font-size: 1.4rem;
+    color: #666;
+    flex-shrink: 0;
+}
+
+/* ===================================================================
+ * DOCKER CONTAINER
+ * =================================================================== */
+
+.vd-container-scene {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.vd-container-image { display: flex; flex-direction: column; gap: 4px; }
+
+.vd-layer {
+    padding: 6px 14px;
+    background: #1e2a3a;
+    border: 1px solid #2a4a6a;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #8ab4f8;
+    opacity: 0;
+}
+
+@keyframes vd-layer-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.vd-animate-layer { animation: vd-layer-in 0.4s ease forwards; }
+
+.vd-container-arrow {
+    font-size: 1.5rem;
+    color: #4caf50;
+}
+
+.vd-container-box {
+    padding: 14px 20px;
+    background: #1a2e1a;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 100px;
+}
+
+@keyframes vd-container-spin {
+    0%   { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.vd-animate-container-spin { animation: vd-container-spin 0.6s ease 0.9s both; }
+
+.vd-container-status {
+    color: #4caf50;
+    font-size: 1.2rem;
+    animation: vd-blink 1.5s step-end infinite;
+}
+
+.vd-container-name {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 4px;
+}
+
+/* ===================================================================
+ * DOCKER COMPOSE
+ * =================================================================== */
+
+.vd-compose-scene {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.vd-compose-service {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.82rem;
+    color: #ccc;
+}
+
+.vd-compose-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.vd-compose-link {
+    color: #555;
+    font-family: monospace;
+    letter-spacing: -2px;
+}
+
+.vd-compose-network {
+    width: 100%;
+    text-align: center;
+    padding: 6px;
+    background: #0e1e2e;
+    border: 1px dashed #2a4a6a;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: #6a9fcf;
+    margin-top: 4px;
+}
+
+/* ===================================================================
+ * DOCKER BUILD STEPS
+ * =================================================================== */
+
+.vd-build-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-build-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #aaa;
+    opacity: 0;
+}
+
+@keyframes vd-build-step-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); background: rgba(255,255,255,.03); }
+}
+
+.vd-animate-build-step { animation: vd-build-step-in 0.4s ease forwards; }
+
+.vd-build-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #2a4a6a;
+    color: #8ab4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.vd-build-result {
+    text-align: center;
+    padding: 8px;
+    color: #4caf50;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+/* ===================================================================
+ * SQL / DATABASE TABLES
+ * =================================================================== */
+
+.vd-table-scene {
+    padding: 10px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-db-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: ui-monospace, monospace;
+    font-size: 0.78rem;
+}
+
+.vd-db-table th {
+    text-align: left;
+    padding: 6px 10px;
+    background: #1a1a1a;
+    color: #888;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+}
+
+.vd-db-table td {
+    padding: 6px 10px;
+    color: #ccc;
+    border-bottom: 1px solid #222;
+}
+
+.vd-db-row { transition: background 0.3s ease; }
+
+@keyframes vd-row-highlight {
+    0%,100% { background: transparent; }
+    30%,70% { background: rgba(66,165,245,.12); }
+}
+
+.vd-animate-row-highlight { animation: vd-row-highlight 3s ease-in-out infinite; }
+
+.vd-db-row--new { background: rgba(76,175,80,.12); }
+
+.vd-db-result {
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: #4caf50;
+    font-family: monospace;
+}
+
+.vd-db-old { color: #f44336; text-decoration: line-through; opacity: 0.6; }
+.vd-db-new { color: #4caf50; font-weight: 600; }
+
+/* SQL Schema */
+.vd-schema-box {
+    border: 1px solid #333;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.vd-schema-header {
+    padding: 8px 12px;
+    background: #1a2e3a;
+    color: #8ab4f8;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #333;
+}
+
+.vd-schema-col {
+    padding: 6px 12px;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #aaa;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.vd-schema-key { margin-right: 6px; }
+
+/* ===================================================================
+ * KUBERNETES
+ * =================================================================== */
+
+.vd-k8s-cluster {
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-k8s-node {
+    border: 1px dashed #444;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.vd-k8s-node-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.vd-k8s-pods-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.vd-k8s-pod {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #aaa;
+}
+
+@keyframes vd-pod-scale {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.vd-animate-pod-scale { animation: vd-pod-scale 0.4s ease forwards; }
+
+.vd-k8s-pod-status {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.vd-k8s-pod-status.running { background: #4caf50; box-shadow: 0 0 6px rgba(76,175,80,.5); }
+
+/* K8s Rolling Update */
+.vd-k8s-rolling {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-k8s-rolling-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.vd-k8s-rolling-label {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #666;
+}
+
+.vd-k8s-rpod {
+    width: 40px; height: 40px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.vd-k8s-rpod--old { background: #3a1a1a; border: 1px solid #6a2a2a; color: #f44336; }
+.vd-k8s-rpod--new { background: #1a3a1a; border: 1px solid #2a6a2a; color: #4caf50; }
+
+@keyframes vd-pod-down {
+    0%   { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.2; transform: scale(0.6); }
+}
+
+@keyframes vd-pod-up {
+    0%   { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.vd-animate-pod-down { animation: vd-pod-down 0.6s ease forwards; }
+.vd-animate-pod-up   { animation: vd-pod-up   0.5s ease forwards; }
+
+/* ===================================================================
+ * LINUX FILE TREE
+ * =================================================================== */
+
+.vd-tree {
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.82rem;
+    color: #ccc;
+}
+
+.vd-tree-item { padding: 3px 0; }
+.vd-tree-indent  { padding-left: 20px; }
+.vd-tree-indent2 { padding-left: 40px; }
+.vd-tree-new { color: #4caf50; }
+
+.vd-tree-delete { color: #f44336; }
+
+@keyframes vd-delete-out {
+    0%   { opacity: 1; transform: translateX(0); text-decoration: none; }
+    50%  { text-decoration: line-through; }
+    100% { opacity: 0; transform: translateX(20px); height: 0; padding: 0; }
+}
+
+.vd-animate-delete { animation: vd-delete-out 1.2s ease forwards; }
+
+/* ===================================================================
+ * CHMOD PERMISSIONS
+ * =================================================================== */
+
+.vd-chmod-scene {
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-chmod-file {
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.88rem;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.vd-chmod-matrix { display: flex; flex-direction: column; gap: 6px; }
+
+.vd-chmod-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vd-chmod-who {
+    min-width: 50px;
+    font-size: 0.72rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.vd-chmod-perm {
+    width: 28px; height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    font-family: monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.vd-chmod-perm.on { background: #1a2e1a; border-color: #2a6a2a; color: #4caf50; }
+
+@keyframes vd-toggle {
+    0%,30% { background: #1a1a1a; border-color: #333; color: #555; }
+    50%,100% { background: #1a2e1a; border-color: #2a6a2a; color: #4caf50; }
+}
+
+.vd-animate-toggle { animation: vd-toggle 1.5s ease forwards; }
+
+/* ===================================================================
+ * PROCESS BARS
+ * =================================================================== */
+
+.vd-process-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-process-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vd-process-bar-label {
+    min-width: 120px;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #aaa;
+}
+
+.vd-process-cpu {
+    flex: 1;
+    height: 14px;
+    background: #1a1a1a;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.vd-process-cpu::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, #42a5f5, #4caf50);
+    border-radius: 3px;
+    width: 0;
+}
+
+@keyframes vd-cpu-bar {
+    0%   { width: 10%; }
+    25%  { width: 65%; }
+    50%  { width: 30%; }
+    75%  { width: 80%; }
+    100% { width: 45%; }
+}
+
+.vd-animate-cpu-bar::after { animation: vd-cpu-bar 3s ease-in-out infinite; }
+
+/* ===================================================================
+ * NPM / PACKAGE INSTALL
+ * =================================================================== */
+
+.vd-npm-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-npm-progress {
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.vd-npm-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #66bb6a);
+    border-radius: 3px;
+    width: 0;
+}
+
+@keyframes vd-npm-progress {
+    0%   { width: 0; }
+    100% { width: 100%; }
+}
+
+.vd-animate-npm-progress { animation: vd-npm-progress 1.8s ease forwards; }
+
+.vd-npm-tree {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #aaa;
+    padding-left: 4px;
+}
+
+.vd-npm-dep { padding: 2px 0; }
+
+.vd-npm-result {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #4caf50;
+    font-weight: 600;
+}
+
+/* ===================================================================
+ * PYTHON VENV
+ * =================================================================== */
+
+.vd-venv-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-venv-global {
+    font-size: 0.88rem;
+    color: #aaa;
+}
+
+.vd-venv-arrow {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.vd-venv-bubble {
+    padding: 14px 20px;
+    border: 2px dashed #8ab4f8;
+    border-radius: 16px;
+    background: rgba(66,165,245,.05);
+    text-align: center;
+}
+
+.vd-venv-label {
+    font-family: monospace;
+    font-size: 0.88rem;
+    color: #8ab4f8;
+    margin-bottom: 8px;
+}
+
+.vd-venv-items { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
+.vd-venv-item {
+    padding: 4px 10px;
+    background: #1a2e3a;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #aaa;
+}
+
+/* ===================================================================
+ * LIFECYCLE (Tier 2 template)
+ * =================================================================== */
+
+.vd-lifecycle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vd-lifecycle-stage {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    color: #ccc;
+}
+
+.vd-lifecycle-dot { width: 10px; height: 10px; border-radius: 50%; }
+.vd-lifecycle-arrow { color: #555; font-size: 1.2rem; }
+
+/* ===================================================================
+ * CONFIG CHANGE (Tier 2 template)
+ * =================================================================== */
+
+.vd-config-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.vd-config-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    background: #0a0a0a;
+    border-radius: 4px;
+}
+
+.vd-config-key {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #8ab4f8;
+    min-width: 60px;
+}
+
+.vd-config-val {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #aaa;
+}
+
+/* ===================================================================
+ * GENERIC TERMINAL FALLBACK
+ * =================================================================== */
+
+.vd-generic-term {
+    background: #000;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: monospace;
+    color: #0f0;
+    min-height: 80px;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+
+.vd-gt-prompt { color: #aaa; }
+.vd-cursor { animation: vd-blink 1s step-end infinite; }
+.vd-gt-result { color: #aaa; margin-top: 8px; opacity: 0; }
+
+/* ===================================================================
+ * REDUCED MOTION
+ * =================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
     .vd-animate-padding,
@@ -329,11 +1304,41 @@
     .vd-animate-border,
     .vd-sample,
     .vd-file,
-    .vd-head {
+    .vd-head,
+    .vd-animate-fadein,
+    .vd-animate-fadein-delay,
+    .vd-animate-slideup,
+    .vd-animate-scalein,
+    .vd-animate-pulse,
+    .vd-animate-fly-right,
+    .vd-animate-fly-left,
+    .vd-animate-layer,
+    .vd-animate-container-spin,
+    .vd-animate-build-step,
+    .vd-animate-row-highlight,
+    .vd-animate-pod-scale,
+    .vd-animate-pod-down,
+    .vd-animate-pod-up,
+    .vd-animate-stash-slide,
+    .vd-animate-delete,
+    .vd-animate-toggle,
+    .vd-animate-cpu-bar::after,
+    .vd-animate-npm-progress,
+    .vd-cursor {
         animation: none !important;
+    }
+    .vd-animate-fadein, .vd-animate-fadein-delay,
+    .vd-animate-slideup, .vd-animate-scalein,
+    .vd-animate-layer, .vd-animate-container-spin,
+    .vd-animate-build-step, .vd-animate-pod-scale,
+    .vd-animate-pod-up {
+        opacity: 1 !important;
+        transform: none !important;
     }
     .vd-padding.vd-animate-padding { padding: 18px; }
     .vd-margin.vd-animate-margin { padding: 14px; }
     .vd-border.vd-animate-border { border-width: 6px; }
     .vd-file { opacity: 1; transform: none; }
+    .vd-animate-cpu-bar::after { width: 45%; }
+    .vd-animate-npm-progress { width: 100%; }
 }

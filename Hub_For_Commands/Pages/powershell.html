@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerShell Commands</title>
+    <meta name="description" content="Interactive PowerShell command reference with simulated terminal. Search, learn, and practice PowerShell cmdlets with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -20,14 +21,14 @@
         <h1>PowerShell Commands</h1>
         <p>Cmdlets for files, processes, networking.</p>
         <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&lt;- Back to Hub</a>
+            <a href="../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
         </div>
     </header>
 
     <main class="hub-container git-layout">
         <section class="git-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search commands...">
+                <input type="search" id="command-search" placeholder="Search PowerShell (Get-ChildItem...)" autofocus>
             </div>
             <ul id="command-list" class="command-list"></ul>
         </section>
@@ -60,12 +61,12 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <span class="term-title">terminal</span>
+                    <span class="term-title">Windows PowerShell</span>
                     <button id="bash-clear-btn" class="term-clear-btn" aria-label="Clear Terminal">Clear</button>
                 </div>
                 <div class="terminal-body" id="bash-output"></div>
                 <div class="terminal-input-wrapper">
-                    <span class="prompt">$</span>
+                    <span class="prompt">PS&gt;</span>
                     <input type="text" id="bash-input" class="bash-input" autocomplete="off" spellcheck="false">
                 </div>
             </div>
@@ -81,18 +82,15 @@
     <script>
         window.commandHubConfig = {
             commands: powershellCommandsData,
-            terminalTitle: "Windows PowerShell",
-            welcomeHtml: "Simulated PowerShell. Try Get-ChildItem.",
-            promptSymbol: "PS\u003e",
+            shellMode: 'powershell',
+            terminalTitle: 'Windows PowerShell',
+            welcomeHtml: 'Simulated PowerShell. Try Get-ChildItem.',
+            promptSymbol: 'PS>',
             requiredPrefix: null,
-                formatUnknown: function (input) {
-                    var t = input.split(/\s+/)[0];
-                    return "The term '" + t + "' is not recognized...";
-                },
         };
     </script>
     <script src="../js/visual-demos.js"></script>
-    <script src="../js/command-hub.js"></script>
+    <script src="../js/terminal-engine.js"></script>
 </body>
 
 </html>

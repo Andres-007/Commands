@@ -1,6 +1,6 @@
 (function () {
     document.addEventListener('DOMContentLoaded', () => {
-        const root = document.getElementById('linux-folders-root');
+        const root = document.querySelector('.cards-grid');
         const modal = document.getElementById('hub-folder-modal');
         if (!root || !modal || !window.LINUX_HUB_FOLDERS) return;
 
@@ -43,9 +43,9 @@
                 glyph.className = 'hub-folder-inner-glyph';
                 glyph.setAttribute('aria-hidden', 'true');
                 if (c.icon) {
-                    glyph.innerHTML = `<i class="${c.icon}" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>`;
+                    glyph.innerHTML = `<i class="${c.icon} card-icon"></i>`;
                 } else if (c.imgIcon) {
-                    glyph.innerHTML = `<img src="${c.imgIcon}" style="width: 4rem; height: 4rem; margin-bottom: 15px; display: block;">`;
+                    glyph.innerHTML = `<img src="${c.imgIcon}" class="card-icon-img">`;
                 } else {
                     glyph.textContent = c.glyph || '🐧';
                 }
@@ -88,6 +88,7 @@
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'hub-folder-card';
+            btn.dataset.category = 'os';
             btn.setAttribute('aria-expanded', 'false');
             btn.setAttribute('aria-haspopup', 'dialog');
             btn.innerHTML =

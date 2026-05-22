@@ -1,3 +1,7 @@
+/* ================================================================
+   Hub of Commands — Dark Theme
+   ================================================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,41 +16,33 @@ body {
     overflow-x: hidden;
 }
 
-/* Global Custom Scrollbars for Dark Theme */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+/* --- Scrollbars --- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
 
-/* Page Transition Overlay */
+/* ================================================================
+   Page Transition Overlay
+   ================================================================ */
+
 .transition-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-color: #000000;
     z-index: 9999;
     pointer-events: none;
     transition: opacity 0.5s ease-in-out;
-    opacity: 1; /* Starts visible, faded out by JS */
+    opacity: 1;
 }
 
-.transition-overlay.hidden {
-    opacity: 0;
-}
+.transition-overlay.hidden { opacity: 0; }
 
-/* Header */
+/* ================================================================
+   Header
+   ================================================================ */
+
 .hub-header {
     text-align: center;
     padding: 60px 20px 40px;
@@ -65,14 +61,39 @@ body {
     font-weight: 300;
 }
 
-/* Main Container */
+/* ================================================================
+   Typewriter Cursor (JS-driven typewriter, CSS cursor only)
+   ================================================================ */
+
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #ffffff;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}
+
+/* ================================================================
+   Main Container
+   ================================================================ */
+
 .hub-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px 60px;
 }
 
-/* Grid for Cards */
+/* ================================================================
+   Cards Grid
+   ================================================================ */
+
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -80,8 +101,26 @@ body {
     margin-top: 40px;
 }
 
-/* Command Card */
+/* ================================================================
+   Staggered Entrance
+   ================================================================ */
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ================================================================
+   Command Card
+   ================================================================ */
+
 .command-card {
+    position: relative;
     background-color: #0a0a0a;
     border: 1px solid #222222;
     border-radius: 12px;
@@ -89,13 +128,71 @@ body {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
+                opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease both;
 }
+
+.command-card:nth-child(1)  { animation-delay: 0.04s; }
+.command-card:nth-child(2)  { animation-delay: 0.08s; }
+.command-card:nth-child(3)  { animation-delay: 0.12s; }
+.command-card:nth-child(4)  { animation-delay: 0.16s; }
+.command-card:nth-child(5)  { animation-delay: 0.20s; }
+.command-card:nth-child(6)  { animation-delay: 0.24s; }
+.command-card:nth-child(7)  { animation-delay: 0.28s; }
+.command-card:nth-child(8)  { animation-delay: 0.32s; }
+.command-card:nth-child(9)  { animation-delay: 0.36s; }
+.command-card:nth-child(10) { animation-delay: 0.40s; }
 
 .command-card:hover {
     transform: translateY(-5px);
     border-color: #555555;
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+}
+
+/* --- Mouse-tracking glow (Vercel-style) --- */
+.command-card::before,
+.hub-folder-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.command-card:hover::before,
+.hub-folder-card:hover::before {
+    opacity: 1;
+}
+
+/* Ensure card children are above the glow */
+.command-card > *,
+.hub-folder-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.command-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.command-card p {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    flex-grow: 1;
 }
 
 .card-img-placeholder {
@@ -113,20 +210,108 @@ body {
     letter-spacing: 2px;
 }
 
-.command-card h2 {
-    font-size: 1.5rem;
+/* ================================================================
+   Card Icons
+   ================================================================ */
+
+.card-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.card-icon--light {
+    color: #ffffff;
+}
+
+.card-icon-img {
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* ================================================================
+   Card Filtering
+   ================================================================ */
+
+.command-card.hub-card-hidden,
+.hub-folder-card.hub-card-hidden {
+    display: none !important;
+}
+
+.command-card.hub-card-visible,
+.hub-folder-card.hub-card-visible {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* ================================================================
+   Segmented Filter Bar — Single Oval with Sliding Indicator
+   ================================================================ */
+
+.hub-filter-bar {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    background: #111111;
+    border-radius: 999px;
+    padding: 4px;
+    margin: 0 auto 32px;
+    border: 1px solid #222222;
+}
+
+/* The sliding indicator — positioned behind the active button */
+.hub-filter-slider {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    transition: transform 0.3s ease, width 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hub-pill {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: transparent;
+    color: #888888;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+.hub-pill:hover {
+    color: #cccccc;
+}
+
+.hub-pill.active {
+    color: #ffffff;
     font-weight: 600;
-    margin-bottom: 10px;
 }
 
-.command-card p {
-    color: #aaaaaa;
-    font-size: 0.95rem;
-    margin-bottom: 24px;
-    flex-grow: 1;
+/* Center the bar in its parent */
+.hub-filter-bar-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
 }
 
-/* Navigation Button */
+/* ================================================================
+   Navigation Buttons
+   ================================================================ */
+
 .nav-btn {
     display: inline-block;
     text-align: center;
@@ -156,10 +341,16 @@ body {
     border-color: #ffffff;
 }
 
-/* Utilities */
+/* ================================================================
+   Utilities
+   ================================================================ */
+
 .mb-4 { margin-bottom: 1.5rem; }
 
-/* Topic stub pages (Pages/*.html except full-featured pages like git) */
+/* ================================================================
+   Topic Stub Pages
+   ================================================================ */
+
 .topic-page-main {
     max-width: 640px;
     margin-left: auto;
@@ -167,13 +358,8 @@ body {
     padding-bottom: 80px;
 }
 
-.topic-page-card {
-    margin-top: 20px;
-}
-
-.topic-page-card p {
-    flex-grow: 0;
-}
+.topic-page-card { margin-top: 20px; }
+.topic-page-card p { flex-grow: 0; }
 
 .topic-page-card .topic-lead {
     color: #aaaaaa;
@@ -189,6 +375,10 @@ body {
     margin-top: 8px;
 }
 
+/* ================================================================
+   Footer
+   ================================================================ */
+
 .site-footer {
     text-align: center;
     padding: 40px 20px;
@@ -197,13 +387,10 @@ body {
     font-weight: 300;
 }
 
-@media (max-width: 768px) {
-    .hub-header h1 {
-        font-size: 2.2rem;
-    }
-}
+/* ================================================================
+   Section Titles
+   ================================================================ */
 
-/* --- Linux folder tiles (hub index) --- */
 .hub-section-title {
     font-size: 1.35rem;
     font-weight: 600;
@@ -220,11 +407,14 @@ body {
     max-width: 640px;
 }
 
-.hub-folder-cards-grid {
-    margin-top: 0;
-}
+/* ================================================================
+   Linux Folder Cards
+   ================================================================ */
+
+.hub-folder-cards-grid { margin-top: 0; }
 
 .hub-folder-card {
+    position: relative;
     background-color: #0a0a0a;
     border: 1px solid #222222;
     border-radius: 16px;
@@ -236,6 +426,7 @@ body {
     cursor: pointer;
     color: inherit;
     font: inherit;
+    overflow: hidden;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -295,10 +486,30 @@ body {
     color: #666666;
 }
 
-/* Modal */
-body.hub-folder-modal-open {
-    overflow: hidden;
+/* --- Linux distro cards rendered as flat command-cards in unified grid --- */
+.command-card--linux {
+    text-align: center;
 }
+
+.command-card--linux .linux-card-glyph {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.command-card--linux .linux-card-family {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666666;
+    margin-top: auto;
+}
+
+/* ================================================================
+   Modal
+   ================================================================ */
+
+body.hub-folder-modal-open { overflow: hidden; }
 
 .hub-folder-modal {
     position: fixed;
@@ -310,9 +521,7 @@ body.hub-folder-modal-open {
     padding: 24px;
 }
 
-.hub-folder-modal[hidden] {
-    display: none;
-}
+.hub-folder-modal[hidden] { display: none; }
 
 .hub-folder-modal-backdrop {
     position: absolute;
@@ -354,10 +563,8 @@ body.hub-folder-modal-open {
 
 .hub-folder-modal-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 40px;
-    height: 40px;
+    top: 16px; right: 16px;
+    width: 40px; height: 40px;
     border-radius: 10px;
     border: 1px solid #404040;
     background: #222222;
@@ -393,8 +600,31 @@ body.hub-folder-modal-open {
     font-size: 4rem;
 }
 
+/* ================================================================
+   Responsive
+   ================================================================ */
+
 @media (max-width: 768px) {
-    .hub-folder-modal {
-        padding: 12px;
+    .hub-header h1 { font-size: 2.2rem; }
+    .hub-folder-modal { padding: 12px; }
+
+    .hub-filter-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
+
+    .hub-pill {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ================================================================
+   Reduced Motion
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .command-card { animation: none; transition: none; }
+    .hub-filter-slider { transition: none; }
+    .typewriter-cursor { animation: none; opacity: 1; }
 }

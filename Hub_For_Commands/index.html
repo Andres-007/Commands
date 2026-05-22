@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hub of Commands</title>
+    <meta name="description" content="Interactive reference hub for CLI tools, programming languages, and operating systems. Search commands, try them in simulated terminals, and learn with animated visual demos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -17,21 +18,32 @@
     <div id="transition-overlay" class="transition-overlay"></div>
 
     <header class="hub-header">
-        <h1>Hub of Commands</h1>
+        <h1><span class="typewriter">Hub of Commands</span></h1>
         <p>SIXNIE</p>
     </header>
 
     <main class="hub-container">
-        <h2 class="hub-section-title">Linux distributions</h2>
-        <p class="hub-section-lead">Open a folder to browse distros by family (APT, DNF, pacman...). Each distro links to commands for its package manager.</p>
-        <div id="linux-folders-root" class="cards-grid hub-folder-cards-grid"></div>
+
+        <!-- Segmented Filter Bar — sits at the very top of main -->
+        <div class="hub-filter-bar-wrap">
+            <nav id="hub-filter-bar" class="hub-filter-bar" aria-label="Filter by category">
+                <div class="hub-filter-slider" id="hub-filter-slider"></div>
+                <button class="hub-pill active" data-category="all">Todos</button>
+                <button class="hub-pill" data-category="devops">Infraestructura</button>
+                <button class="hub-pill" data-category="backend">Backend &amp; APIs</button>
+                <button class="hub-pill" data-category="frontend">Frontend</button>
+                <button class="hub-pill" data-category="databases">Bases de Datos</button>
+                <button class="hub-pill" data-category="os">Sistemas Operativos</button>
+            </nav>
+        </div>
 
         <h2 class="hub-section-title">Commands by topic</h2>
         <p class="hub-section-lead">General tools and stacks — same card layout as before.</p>
+
         <div class="cards-grid">
             <!-- Git Card -->
-            <div class="command-card">
-                <i class="devicon-git-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="backend devops">
+                <i class="devicon-git-plain colored card-icon"></i>
                 <h2>Git Commands</h2>
                 <p>On this page you find all commands of git, explained in real use also search for levels beginner, mid
                     and advance.</p>
@@ -39,8 +51,8 @@
             </div>
 
             <!-- Bash Card -->
-            <div class="command-card">
-                <i class="devicon-bash-plain" style="font-size: 4rem; display: block; margin-bottom: 15px; color: white;"></i>
+            <div class="command-card" data-category="backend os">
+                <i class="devicon-bash-plain card-icon card-icon--light"></i>
                 <h2>Bash Commands</h2>
                 <p>On this page you find all commands of bash, explained in real use also search for levels beginner,
                     mid
@@ -49,8 +61,8 @@
             </div>
 
             <!-- Windows Commands -->
-            <div class="command-card">
-                <i class="devicon-windows8-original colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="os">
+                <i class="devicon-windows8-original colored card-icon"></i>
                 <h2>Windows Commands</h2>
                 <p>On this page you find all commands of windows, explained in real use also search for levels beginner,
                     mid
@@ -59,8 +71,8 @@
             </div>
 
             <!-- Docker Card -->
-            <div class="command-card">
-                <i class="devicon-docker-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="devops">
+                <i class="devicon-docker-plain colored card-icon"></i>
                 <h2>Docker Commands</h2>
                 <p>On this page you find all commands of docker, explained in real use also search for levels beginner,
                     mid
@@ -69,8 +81,8 @@
             </div>
 
             <!-- Kuberenetes -->
-            <div class="command-card">
-                <i class="devicon-kubernetes-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="devops">
+                <i class="devicon-kubernetes-plain colored card-icon"></i>
                 <h2>Kuberenetes Commands</h2>
                 <p>On this page you find all commands of kuberenetes, explained in real use also search for levels
                     beginner,
@@ -80,8 +92,8 @@
             </div>
 
             <!-- Power Shell -->
-            <div class="command-card">
-                <i class="devicon-windows8-original colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="os">
+                <i class="devicon-windows8-original colored card-icon"></i>
                 <h2>Power Shell Commands</h2>
                 <p>On this page you find all commands of power shell, explained in real use also search for levels
                     beginner,
@@ -91,8 +103,8 @@
             </div>
 
             <!-- Python -->
-            <div class="command-card">
-                <i class="devicon-python-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="backend">
+                <i class="devicon-python-plain colored card-icon"></i>
                 <h2>Python Commands</h2>
                 <p>On this page you find all commands of python, explained in real use also search for levels beginner,
                     mid
@@ -101,8 +113,8 @@
             </div>
 
             <!-- Node.js -->
-            <div class="command-card">
-                <i class="devicon-nodejs-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="backend">
+                <i class="devicon-nodejs-plain colored card-icon"></i>
                 <h2>Node.js Commands</h2>
                 <p>On this page you find all commands of node.js, explained in real use also search for levels beginner,
                     mid
@@ -111,8 +123,8 @@
             </div>
 
             <!-- React -->
-            <div class="command-card">
-                <i class="devicon-react-original colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-react-original colored card-icon"></i>
                 <h2>React Commands</h2>
                 <p>On this page you find all commands of react, explained in real use also search for levels beginner,
                     mid
@@ -121,8 +133,8 @@
             </div>
 
             <!-- Angular -->
-            <div class="command-card">
-                <i class="devicon-angularjs-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-angularjs-plain colored card-icon"></i>
                 <h2>Angular Commands</h2>
                 <p>On this page you find all commands of angular, explained in real use also search for levels beginner,
                     mid
@@ -131,8 +143,8 @@
             </div>
 
             <!-- Vue.js -->
-            <div class="command-card">
-                <i class="devicon-vuejs-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-vuejs-plain colored card-icon"></i>
                 <h2>Vue.js Commands</h2>
                 <p>On this page you find all commands of vue.js, explained in real use also search for levels beginner,
                     mid
@@ -141,8 +153,8 @@
             </div>
 
             <!-- Svelte -->
-            <div class="command-card">
-                <i class="devicon-svelte-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-svelte-plain colored card-icon"></i>
                 <h2>Svelte Commands</h2>
                 <p>On this page you find all commands of svelte, explained in real use also search for levels beginner,
                     mid
@@ -151,8 +163,8 @@
             </div>
 
             <!-- React Native -->
-            <div class="command-card">
-                <i class="devicon-react-original colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-react-original colored card-icon"></i>
                 <h2>React Native Commands</h2>
                 <p>On this page you find all commands of react native, explained in real use also search for levels
                     beginner,
@@ -162,8 +174,8 @@
             </div>
 
             <!-- Flutter -->
-            <div class="command-card">
-                <i class="devicon-flutter-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-flutter-plain colored card-icon"></i>
                 <h2>Flutter Commands</h2>
                 <p>On this page you find all commands of flutter, explained in real use also search for levels beginner,
                     mid
@@ -172,8 +184,8 @@
             </div>
 
             <!-- JavaScript -->
-            <div class="command-card">
-                <i class="devicon-javascript-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend backend">
+                <i class="devicon-javascript-plain colored card-icon"></i>
                 <h2>JavaScript Commands</h2>
                 <p>On this page you find all commands of javascript, explained in real use also search for levels
                     beginner,
@@ -183,8 +195,8 @@
             </div>
 
             <!-- TypeScript -->
-            <div class="command-card">
-                <i class="devicon-typescript-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend backend">
+                <i class="devicon-typescript-plain colored card-icon"></i>
                 <h2>TypeScript Commands</h2>
                 <p>On this page you find all commands of typescript, explained in real use also search for levels
                     beginner,
@@ -194,8 +206,8 @@
             </div>
 
             <!-- HTML -->
-            <div class="command-card">
-                <i class="devicon-html5-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-html5-plain colored card-icon"></i>
                 <h2>HTML Commands</h2>
                 <p>On this page you find all commands of html, explained in real use also search for levels beginner,
                     mid
@@ -204,8 +216,8 @@
             </div>
 
             <!-- CSS -->
-            <div class="command-card">
-                <i class="devicon-css3-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-css3-plain colored card-icon"></i>
                 <h2>CSS Commands</h2>
                 <p>On this page you find all commands of css, explained in real use also search for levels beginner,
                     mid
@@ -214,8 +226,8 @@
             </div>
 
             <!-- JQuery -->
-            <div class="command-card">
-                <i class="devicon-jquery-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="frontend">
+                <i class="devicon-jquery-plain colored card-icon"></i>
                 <h2>JQuery Commands</h2>
                 <p>On this page you find all commands of jquery, explained in real use also search for levels beginner,
                     mid
@@ -224,8 +236,8 @@
             </div>
 
             <!-- MySQL-->
-            <div class="command-card">
-                <i class="devicon-mysql-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="databases">
+                <i class="devicon-mysql-plain colored card-icon"></i>
                 <h2>MySQL Commands</h2>
                 <p>On this page you find all commands of mysql, explained in real use also search for levels beginner,
                     mid
@@ -234,8 +246,8 @@
             </div>
 
             <!-- MongoDB-->
-            <div class="command-card">
-                <i class="devicon-mongodb-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="databases">
+                <i class="devicon-mongodb-plain colored card-icon"></i>
                 <h2>MongoDB Commands</h2>
                 <p>On this page you find all commands of mongodb, explained in real use also search for levels beginner,
                     mid
@@ -244,8 +256,8 @@
             </div>
 
             <!-- PostgreSQL-->
-            <div class="command-card">
-                <i class="devicon-postgresql-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="databases">
+                <i class="devicon-postgresql-plain colored card-icon"></i>
                 <h2>PostgreSQL Commands</h2>
                 <p>On this page you find all commands of postgresql, explained in real use also search for levels
                     beginner,
@@ -255,8 +267,8 @@
             </div>
 
             <!-- Oracle-->
-            <div class="command-card">
-                <i class="devicon-oracle-original colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="databases">
+                <i class="devicon-oracle-original colored card-icon"></i>
                 <h2>Oracle Commands</h2>
                 <p>On this page you find all commands of oracle, explained in real use also search for levels beginner,
                     mid
@@ -265,8 +277,8 @@
             </div>
 
             <!-- SQL Server-->
-            <div class="command-card">
-                <i class="devicon-microsoftsqlserver-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="databases">
+                <i class="devicon-microsoftsqlserver-plain colored card-icon"></i>
                 <h2>SQL Server Commands</h2>
                 <p>On this page you find all commands of sql server, explained in real use also search for levels
                     beginner,
@@ -276,8 +288,8 @@
             </div>
 
             <!-- Redis-->
-            <div class="command-card">
-                <i class="devicon-redis-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="databases">
+                <i class="devicon-redis-plain colored card-icon"></i>
                 <h2>Redis Commands</h2>
                 <p>On this page you find all commands of redis, explained in real use also search for levels beginner,
                     mid
@@ -286,8 +298,8 @@
             </div>
 
             <!-- Firebase-->
-            <div class="command-card">
-                <i class="devicon-firebase-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="devops backend">
+                <i class="devicon-firebase-plain colored card-icon"></i>
                 <h2>Firebase Commands</h2>
                 <p>On this page you find all commands of firebase, explained in real use also search for levels
                     beginner,
@@ -297,8 +309,8 @@
             </div>
 
             <!-- Apache-->
-            <div class="command-card">
-                <i class="devicon-apache-plain colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="devops">
+                <i class="devicon-apache-plain colored card-icon"></i>
                 <h2>Apache Commands</h2>
                 <p>On this page you find all commands of apache, explained in real use also search for levels beginner,
                     mid
@@ -307,8 +319,8 @@
             </div>
 
             <!-- Nginx-->
-            <div class="command-card">
-                <i class="devicon-nginx-original colored" style="font-size: 4rem; display: block; margin-bottom: 15px;"></i>
+            <div class="command-card" data-category="devops">
+                <i class="devicon-nginx-original colored card-icon"></i>
                 <h2>Nginx Commands</h2>
                 <p>On this page you find all commands of nginx, explained in real use also search for levels beginner,
                     mid
@@ -317,8 +329,8 @@
             </div>
 
             <!-- Cassandra -->
-            <div class="command-card">
-                <img src="https://cdn.simpleicons.org/apachecassandra/1287B1" style="width: 4rem; height: 4rem; margin-bottom: 15px; display: block;">
+            <div class="command-card" data-category="databases">
+                <img src="https://cdn.simpleicons.org/apachecassandra/1287B1" class="card-icon-img" alt="Cassandra">
                 <h2>Cassandra Commands</h2>
                 <p>On this page you find all commands of cassandra, explained in real use also search for levels
                     beginner,
@@ -327,6 +339,7 @@
                 <a href="Pages/cassandra.html" class="nav-btn transition-link">Search commands</a>
             </div>
         </div>
+
     </main>
 
     <div id="hub-folder-modal" class="hub-folder-modal" hidden aria-hidden="true">
@@ -349,6 +362,8 @@
 
     <script src="js/linux-folders-data.js"></script>
     <script src="js/hub-folders.js"></script>
+    <script src="js/hub-filter.js"></script>
+    <script src="js/card-glow.js"></script>
     <script src="js/js.js"></script>
 </body>
 

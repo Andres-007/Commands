@@ -35,7 +35,11 @@ const gitCommandsData = [
         non_technical_desc: "This is like putting items into a shipping box. You're telling Git 'Get these specific changes ready to be saved in the next snapshot.'",
         example: "git add .",
         sim_output: "",
-        visualDemo: "git-add-demo"
+        visualDemo: "git-add-demo",
+        demoCategory: "git-staging",
+        argErrors: [
+            { when: "noArgs", message: "Nothing specified, nothing added.\nMaybe you wanted to say 'git add .'?\nhint: Maybe you wanted to say 'git add .'?\nhint: Turn this message off by running\nhint: \"git config advice.addEmptyPathspec false\"" }
+        ]
     },
     {
         id: "git-commit",
@@ -45,7 +49,11 @@ const gitCommandsData = [
         non_technical_desc: "This seals the shipping box and puts a label on it. It permanently saves the changes you prepared with 'git add' into the project's history.",
         example: "git commit -m \"Update index layout\"",
         sim_output: "[main 3b1a2c4] Update index layout\n 1 file changed, 5 insertions(+), 2 deletions(-)",
-        visualDemo: "git-commit-demo"
+        visualDemo: "git-commit-demo",
+        demoCategory: "git-staging",
+        argErrors: [
+            { when: "missingFlag", flag: "-m", message: "error: switch 'm' requires a value" }
+        ]
     },
     {
         id: "git-push",
@@ -54,7 +62,8 @@ const gitCommandsData = [
         technical_desc: "Transmits local commits to a remote repository. It uses refspecs to determine which local branches update which remote branches. Standard pushes require a fast-forward.",
         non_technical_desc: "This uploads your saved snapshots from your computer to the internet (like GitHub) so other people can see them and use them.",
         example: "git push origin main",
-        sim_output: "Enumerating objects: 5, done.\nCounting objects: 100% (5/5), done.\nWriting objects: 100% (3/3), 320 bytes | 320.00 KiB/s, done.\nTotal 3 (delta 2), reused 0 (delta 0)\nTo https://github.com/user/repo.git\n   a1b2c3d..3b1a2c4  main -> main"
+        sim_output: "Enumerating objects: 5, done.\nCounting objects: 100% (5/5), done.\nWriting objects: 100% (3/3), 320 bytes | 320.00 KiB/s, done.\nTotal 3 (delta 2), reused 0 (delta 0)\nTo https://github.com/user/repo.git\n   a1b2c3d..3b1a2c4  main -> main",
+        visualDemo: "git-push-demo"
     },
     {
         id: "git-pull",
@@ -63,7 +72,8 @@ const gitCommandsData = [
         technical_desc: "A composite command that executes git fetch and then immediately merges (or rebases) the fetched commits into the current local branch.",
         non_technical_desc: "This checks the internet (like GitHub) for any new updates that your team members might have made, downloads them, and combines them with your files.",
         example: "git pull",
-        sim_output: "Updating a1b2c3d..4d5e6f7\nFast-forward\n style.css | 12 +++++++++---\n 1 file changed, 9 insertions(+), 3 deletions(-)"
+        sim_output: "Updating a1b2c3d..4d5e6f7\nFast-forward\n style.css | 12 +++++++++---\n 1 file changed, 9 insertions(+), 3 deletions(-)",
+        visualDemo: "git-pull-demo"
     },
     {
         id: "git-branch",
@@ -102,7 +112,11 @@ const gitCommandsData = [
         technical_desc: "The standard tool for joining two or more lines of development. It identifies the most recent common ancestor and performs a three-way merge.",
         non_technical_desc: "This takes the work you did in one timeline (branch) and combines it into your current timeline. It's how you bring a finished feature back into the main project.",
         example: "git merge feature-login",
-        sim_output: "Updating 3b1a2c4..8f9e0d1\nFast-forward\n login.html | 45 +++++++++++++++++++++++++++++++++\n 1 file changed, 45 insertions(+)"
+        sim_output: "Updating 3b1a2c4..8f9e0d1\nFast-forward\n login.html | 45 +++++++++++++++++++++++++++++++++\n 1 file changed, 45 insertions(+)",
+        visualDemo: "git-merge-demo",
+        argErrors: [
+            { when: "noArgs", message: "merge: No remote for the current branch.\nPlease specify which branch you want to merge with." }
+        ]
     },
     {
         id: "git-log",
@@ -138,7 +152,11 @@ const gitCommandsData = [
         technical_desc: "Manages the removal of files. Removes it from both the disk and the index, staging the deletion for the next commit. --cached removes from tracking only.",
         non_technical_desc: "Deletes a file and tells Git 'I want to save the fact that I deleted this file'.",
         example: "git rm old_file.txt",
-        sim_output: "rm 'old_file.txt'"
+        sim_output: "rm 'old_file.txt'",
+        demoCategory: "file-delete",
+        argErrors: [
+            { when: "noArgs", message: "fatal: No pathspec was given. Which files should I remove?" }
+        ]
     },
     {
         id: "git-mv",
@@ -165,7 +183,8 @@ const gitCommandsData = [
         technical_desc: "Provides a temporary storage area for local modifications when a developer must switch tasks before their work is ready to commit. Changes are pushed onto a stack.",
         non_technical_desc: "Takes all your messy, unfinished work and sweeps it under the rug so you have a clean slate to work on something else temporarily.",
         example: "git stash",
-        sim_output: "Saved working directory and index state WIP on main: 3b1a2c4 Update index layout"
+        sim_output: "Saved working directory and index state WIP on main: 3b1a2c4 Update index layout",
+        visualDemo: "git-stash-demo"
     },
     {
         id: "git-worktree",
@@ -183,7 +202,11 @@ const gitCommandsData = [
         technical_desc: "Replays a sequence of commits on top of a new base tip. This 'transplantation' logic effectively rewrites history to create a linear path.",
         non_technical_desc: "Takes your timeline and physically moves it so it starts from the tip of another timeline, making the history look like a straight line.",
         example: "git rebase main",
-        sim_output: "Successfully rebased and updated refs/heads/feature-login."
+        sim_output: "Successfully rebased and updated refs/heads/feature-login.",
+        visualDemo: "git-rebase-demo",
+        argErrors: [
+            { when: "noArgs", message: "fatal: No rebase in progress?\nUsage: git rebase <branch>" }
+        ]
     },
     {
         id: "git-cherry-pick",
