@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 i++;
                 setTimeout(typeWriter, 100);
             } else {
-                cursor.style.display = 'inline-block'; // Mostrar el cursor al finalizar la generación
+                cursor.style.display = 'none'; // Ocultar el cursor al finalizar la generación
             }
         }
         setTimeout(typeWriter, 300); // Small delay before typing
