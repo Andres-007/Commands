@@ -960,45 +960,51 @@
      * ================================================================ */
 
     function initCliSectionBanner() {
-        // Wait for terminal engine to render the list
-        const tid = setInterval(() => {
-            const engine = window._terminalEngine;
-            if (!engine) return;
-            clearInterval(tid);
+        const engine = window._terminalEngine;
+        if (!engine) return;
 
-            const cfg = window.commandHubConfig;
-            if (!cfg || !Array.isArray(cfg.commands)) return;
+        // Prevent double rendering
+        if (document.getElementById('cli-section-divider')) return;
 
-            const cliCmds = cfg.commands.filter(c => c.cliSection);
-            if (cliCmds.length === 0) return;
+        const cfg = window.commandHubConfig;
+        if (!cfg || !Array.isArray(cfg.commands)) return;
 
-            const list = document.getElementById('command-list');
-            if (!list) return;
+        const cliCmds = cfg.commands.filter(c => c.cliSection);
+        if (cliCmds.length === 0) return;
 
-            // Insert a divider before CLI commands
-            const divider = document.createElement('li');
-            divider.style.cssText = 'padding:10px 15px 4px;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#555;font-weight:600;border-top:1px solid #1e1e1e;margin-top:4px;';
-            divider.textContent = '⚡ Bash / CLI Integration';
-            divider.setAttribute('role', 'separator');
-            list.appendChild(divider);
+        const list = document.getElementById('command-list');
+        if (!list) return;
 
-            // Render CLI section commands
-            cliCmds.forEach(cmd => {
-                const li = document.createElement('li');
-                li.className = 'command-item';
-                const snippet = (cmd.non_technical_desc || '').substring(0, 52);
-                li.innerHTML = `<strong>${cmd.command.split(' ').slice(0, 3).join(' ')}</strong> - ${snippet}...`;
-                li.style.borderLeft = '2px solid rgba(139,92,246,0.5)';
-                li.addEventListener('click', () => engine.selectCommand(cmd));
-                list.appendChild(li);
-            });
-        }, 100);
+        // Insert a divider before CLI commands
+        const divider = document.createElement('li');
+        divider.id = 'cli-section-divider';
+        divider.style.cssText = 'padding:10px 15px 4px;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#555;font-weight:600;border-top:1px solid #1e1e1e;margin-top:4px;';
+        divider.textContent = '⚡ Bash / CLI Integration';
+        divider.setAttribute('role', 'separator');
+        list.appendChild(divider);
+
+        // Render CLI section commands
+        cliCmds.forEach(cmd => {
+            const li = document.createElement('li');
+            li.className = 'command-item';
+            const snippet = (cmd.non_technical_desc || '').substring(0, 52);
+            li.innerHTML = `<strong>${cmd.command.split(' ').slice(0, 3).join(' ')}</strong> - ${snippet}...`;
+            li.style.borderLeft = '2px solid rgba(139,92,246,0.5)';
+            li.addEventListener('click', () => engine.selectCommand(cmd));
+            list.appendChild(li);
+        });
     }
 
+    // Expose globally so TerminalEngine can call it directly upon mounting
+    window.initCliSectionBanner = initCliSectionBanner;
+
+    // Fallback: try executing once when DOMContentLoaded fires
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCliSectionBanner);
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window._terminalEngine) initCliSectionBanner();
+        });
     } else {
-        initCliSectionBanner();
+        if (window._terminalEngine) initCliSectionBanner();
     }
 
 })();

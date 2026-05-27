@@ -165,6 +165,11 @@
             this._bindTerminal();
             this._bindClear();
             this.renderList(this.commands);
+
+            // Proactively initialize CLI section banner in sidebar if available (no setInterval polling needed)
+            if (typeof window.initCliSectionBanner === 'function') {
+                window.initCliSectionBanner();
+            }
         }
 
         /* ---- Search ---- */

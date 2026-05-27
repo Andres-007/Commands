@@ -76,23 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTypewriter('header h1');
     applyTypewriter('.term-title');
 
-    // ================================================================
-    // PREMIUM MOUSE TRACKING GLOW
-    // ================================================================
-    function attachGlowEffect() {
-        const glowTargets = document.querySelectorAll('.command-card, .hub-folder-card, .terminal-container, .workspace-canvas');
-        
-        document.body.addEventListener('mousemove', (e) => {
-            glowTargets.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    }
-    attachGlowEffect();
+    // (Note: The premium spotlight glow effect has been moved to card-glow.js using a highly optimized, throttled delegation strategy to prevent layout thrashing and keep 60+ FPS performance.)
 
     // ================================================================
     // UNIFIED DYNAMIC GRID RENDERING (index.html only)
@@ -150,8 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         }).join('');
-
-        attachGlowEffect();
     }
 
     // ================================================================
