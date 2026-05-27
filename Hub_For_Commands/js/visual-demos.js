@@ -654,52 +654,98 @@
             '</div>';
     }
 
-    /* ================================================================
-     * Public API
-     * ================================================================ */
+    // ==========================================
+    // TIER 2 — DOMAIN TEMPLATES
+    // ==========================================
+    function tplFrontendRender(el, cmd) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview: Frontend Domain</p>' +
+            '<p class="visual-demo__caption">Compiling UI components for <strong>' + cmd + '</strong>.</p>' +
+            '<div class="vd-flow-row">' +
+            '<div class="vd-flow-box" style="border-color:#61dafb">⚙️ Components</div>' +
+            '<div class="vd-flow-arrow vd-animate-fadein">→</div>' +
+            '<div class="vd-flow-box vd-flow-box--result vd-animate-fadein-delay">🌐 DOM Render</div>' +
+            '</div>';
+    }
 
+    function tplServerListen(el, cmd) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview: Server Domain</p>' +
+            '<p class="visual-demo__caption">Starting server process for <strong>' + cmd + '</strong>.</p>' +
+            '<div class="vd-transfer-row">' +
+            '<div class="vd-transfer-endpoint"><div class="vd-transfer-icon">🖥️</div><div class="vd-transfer-label">localhost:PORT</div></div>' +
+            '<div class="vd-transfer-pipe"><div class="vd-transfer-packet vd-animate-fly-left">📡</div></div>' +
+            '<div class="vd-transfer-endpoint"><div class="vd-transfer-icon">🌐</div><div class="vd-transfer-label">Listening</div></div>' +
+            '</div>';
+    }
+
+    function tplNoSQLAction(el, cmd) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview: NoSQL Domain</p>' +
+            '<p class="visual-demo__caption">Executing NoSQL operation: <strong>' + cmd + '</strong>.</p>' +
+            '<div class="vd-tree">' +
+            '<div class="vd-tree-item">🗄️ Collection</div>' +
+            '<div class="vd-tree-item vd-tree-indent">📄 Document { id: 1 }</div>' +
+            '<div class="vd-tree-item vd-tree-indent vd-tree-new vd-animate-fadein">📄 Document { updated }</div>' +
+            '</div>';
+    }
+
+    function tplSQLAction(el, cmd) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview: SQL Domain</p>' +
+            '<p class="visual-demo__caption">Executing SQL operation: <strong>' + cmd + '</strong>.</p>' +
+            '<div class="vd-table-scene">' +
+            '<table class="vd-db-table">' +
+            '<thead><tr><th>id</th><th>column_a</th><th>column_b</th></tr></thead>' +
+            '<tbody>' +
+            '<tr class="vd-db-row vd-animate-row-highlight"><td>1</td><td>data</td><td>updated</td></tr>' +
+            '</tbody></table>' +
+            '</div>';
+    }
+
+    function tplContainerAction(el, cmd) {
+        el.innerHTML =
+            '<p class="visual-demo__title">Live preview: Container Domain</p>' +
+            '<p class="visual-demo__caption">Orchestrating container: <strong>' + cmd + '</strong>.</p>' +
+            '<div class="vd-container-scene">' +
+            '<div class="vd-container-box vd-animate-container-spin">' +
+            '<div class="vd-container-status">●</div>' +
+            '<div class="vd-container-name">Instance Node</div>' +
+            '</div></div>';
+    }
+
+    // ==========================================
+    // PUBLIC API - ROBUST FUZZY MATCHING ROUTER
+    // ==========================================
     window.applyVisualDemo = function (id, rootEl) {
         if (!rootEl) return;
         rootEl.classList.remove('visual-demo--empty');
 
-        // Normalize command string for fuzzy match
         var cmd = (id || '').toLowerCase();
 
-        // 1) Try exact bespoke demo
+        // 1) Try exact bespoke demo (From your Tier 1)
         var fn = DEMOS[id];
         if (fn) { fn(rootEl); return; }
 
-        // 2) Fuzzy matching loop
+        // 2) Bespoke fuzzy matching loop (For existing Tier 1 fallback)
         if (cmd.includes('commit')) { DEMOS['git-commit-demo'](rootEl); return; }
-        if (cmd.includes('run') && cmd.includes('docker')) { DEMOS['docker-run'](rootEl); return; }
-        if (cmd.includes('install')) { 
-            if (cmd.includes('npm')) {
-                DEMOS['npm-install'](rootEl);
-            } else {
-                CATEGORY_TEMPLATES['package-install'](rootEl, id);
-            }
-            return; 
-        }
-        if (cmd.includes('pull')) { DEMOS['git-pull-demo'](rootEl); return; }
+        if (cmd.includes('add') && cmd.includes('git')) { DEMOS['git-add-demo'](rootEl); return; }
         if (cmd.includes('push')) { DEMOS['git-push-demo'](rootEl); return; }
-        if (cmd.includes('add')) { DEMOS['git-add-demo'](rootEl); return; }
-        if (cmd.includes('merge')) { DEMOS['git-merge-demo'](rootEl); return; }
-        if (cmd.includes('stash')) { DEMOS['git-stash-demo'](rootEl); return; }
-        if (cmd.includes('rebase')) { DEMOS['git-rebase-demo'](rootEl); return; }
-        if (cmd.includes('init')) { DEMOS['git-init-demo'](rootEl); return; }
-        if (cmd.includes('branch')) { DEMOS['git-branches'](rootEl); return; }
-        if (cmd.includes('compose') && cmd.includes('up')) { DEMOS['docker-compose-up'](rootEl); return; }
-        if (cmd.includes('build')) { DEMOS['docker-build'](rootEl); return; }
+        if (cmd.includes('pull')) { DEMOS['git-pull-demo'](rootEl); return; }
         if (cmd.includes('ls')) { DEMOS['bash-ls'](rootEl); return; }
-        if (cmd.includes('mkdir')) { DEMOS['linux-mkdir'](rootEl); return; }
-        if (cmd.includes('rm')) { DEMOS['linux-rm'](rootEl); return; }
-        if (cmd.includes('chmod')) { DEMOS['linux-chmod'](rootEl); return; }
 
-        // 3) Try category template
+        // 3) DOMAIN TEMPLATES (Tier 2 Comprehensive Fuzzy Matching)
+        if (/(react|ng |vue|svelte|html|css)/.test(cmd)) { tplFrontendRender(rootEl, cmd); return; }
+        if (/(npm |node |apache|nginx|serve|start)/.test(cmd)) { tplServerListen(rootEl, cmd); return; }
+        if (/(mongo|firebase|cassandra)/.test(cmd)) { tplNoSQLAction(rootEl, cmd); return; }
+        if (/(mysql|postgres|oracle|sql|query|select|insert)/.test(cmd)) { tplSQLAction(rootEl, cmd); return; }
+        if (/(docker|k8s|kubectl|pod|container)/.test(cmd)) { tplContainerAction(rootEl, cmd); return; }
+
+        // 4) Category Template Fallback
         var tpl = CATEGORY_TEMPLATES[id];
         if (tpl) { tpl(rootEl, id); return; }
 
-        // 4) Generic fallback
+        // 5) Generic fallback 
         genericTerminalDemo(rootEl, id);
     };
 

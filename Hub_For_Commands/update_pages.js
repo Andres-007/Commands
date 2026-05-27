@@ -1,36 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+const fs = require('fs');
+const path = require('path');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Native Commands</title>
-    <meta name="description" content="Interactive React Native command reference with simulated terminal. Search, learn, and practice react native commands with animated visual demos.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/stylegit.css">
-    <link rel="stylesheet" href="../css/visual-demos.css">
-    <link rel="stylesheet" href="../css/live-editor.css">
-</head>
-
-<body>
-    <div id="transition-overlay" class="transition-overlay"></div>
-
-    <header class="hub-header">
-        <h1>React Native Commands</h1>
-        <p>Metro, run-ios/android, Expo.</p>
-        <div style="margin-top: 20px;">
-            <a href="../index.html" class="nav-btn secondary transition-link">&larr; Back to Hub</a>
-        </div>
-    </header>
-
-        <main class="hub-container workspace-layout">
+const targetDir = path.join(__dirname, 'Pages');
+const newMain = `    <main class="hub-container workspace-layout">
         <!-- Left Column: Command Sidebar -->
         <section class="workspace-sidebar">
             <div id="search-container" class="search-container">
-                <input type="search" id="command-search" placeholder="Search react-native / expo" autofocus>
+                <input type="search" id="command-search" placeholder="Search commands..." autofocus>
             </div>
             <ul id="command-list" class="command-list">
                 <!-- Dynamically populated by JS -->
@@ -86,33 +62,15 @@
         <section class="workspace-canvas">
             <div id="visual-demo" class="visual-demo visual-demo--empty" aria-live="polite"></div>
         </section>
-    </main>
+    </main>`;
 
-    
-    <!-- Interactive Live Editor IDLE -->
-    <div class="hub-container">
-        <div id="live-editor-root" data-lang="reactnative"></div>
-    </div>
-
-    <footer class="site-footer">
-        <p>SIXNIE</p>
-    </footer>
-
-    <script src="../js/js.js"></script>
-    <script src="../js/reactnative-data.js"></script>
-    <script>
-        window.commandHubConfig = {
-            commands: reactnativeCommandsData,
-            shellMode: 'bash',
-            terminalTitle: 'bash - React Native',
-            welcomeHtml: 'npx react-native ... or Expo flows.',
-            promptSymbol: '$',
-            requiredPrefix: null,
-        };
-    </script>
-    <script src="../js/visual-demos.js"></script>
-    <script src="../js/terminal-engine.js"></script>
-    <script src="../js/live-editor.js"></script>
-</body>
-
-</html>
+const files = fs.readdirSync(targetDir);
+for (const file of files) {
+    if (file.endsWith('.html')) {
+        const p = path.join(targetDir, file);
+        let content = fs.readFileSync(p, 'utf8');
+        content = content.replace(/<main[^>]*>[\s\S]*?<\/main>/i, newMain);
+        fs.writeFileSync(p, content, 'utf8');
+        console.log('Updated ' + file);
+    }
+}
