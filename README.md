@@ -1,4 +1,4 @@
-# 💻 Hub of Commands — Premium Interactive CLI & Coding Reference Hub
+# 💻 Hub of Commands — Interactive CLI & Coding
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg" alt="Hub of Commands Banner" width="120" height="120" />
@@ -6,7 +6,7 @@
 
 <h3 align="center">Hub of Commands</h3>
 <p align="center">
-  <strong>An interactive learning environment, terminal simulator, and bi-directional live coding canvas for developers.</strong>
+  <strong>An interactive learning environment, terminal simulator..</strong>
 </p>
 
 <p align="center">
@@ -18,15 +18,11 @@
 
 ---
 
-## ⚡ Características Destacadas (Features)
+## Características Destacadas (Features)
 
 El **Hub of Commands** no es solo una hoja de trucos estática; es un entorno completamente dinámico que integra:
 
-### 1. 🌟 Rejilla Premium con Efecto Spotlight (Card Glow)
-Inspirado en la estética moderna de Vercel y Stripe, todas las tarjetas de temas, contenedores y canvas de trabajo interactúan dinámicamente con el movimiento del mouse, proyectando un haz de luz focalizado y elegante.
-* **Optimización de Producción:** Totalmente libre de cuello de botella mediante delegación reactiva y control por `requestAnimationFrame`. ¡60+ FPS asegurados!
-
-### 2. 🖥️ Terminal Simulator (Interactive Shell Engine)
+### Terminal Simulator
 Simulador integrado de terminal inteligente con:
 * **Modos de Shell:** Compatibilidad con comandos específicos de **Bash**, **CMD** y **PowerShell**.
 * **Control de Restricciones del SO:** Lanza mensajes de error realistas si intentas correr un comando incompatible en un intérprete específico (ej. `ls` en CMD o `cls` en Bash).
@@ -34,13 +30,13 @@ Simulador integrado de terminal inteligente con:
 * **Historial Dinámico:** Usa las teclas de Flecha Arriba (`↑`) y Flecha Abajo (`↓`) para navegar en tus comandos previos.
 * **Preservación de Estado:** Conserva estados contextuales (ej. comandos de Git bloqueados hasta que inicies el repo con `git init`).
 
-### 3. 🎨 IDLE & Editor en Vivo Bi-direccional (NetBeans-Style Designer)
+### Editor en Vivo Bi-direccional
 El panel superior alberga un área interactiva para editar código en tiempo real:
 * **Soporte Multilenguaje:** HTML, CSS, JavaScript, TypeScript, React, Vue.js, Svelte, Angular, jQuery, Python y Node.js.
 * **Consola de Simulación:** Simula salidas de consola inmediatas para Python y Node.js.
 * **NetBeans Designer Canvas:** Un editor visual interactivo bidireccional. ¡Modifica el código y mira los cambios visuales, o arrastra componentes de la caja de herramientas, edítalos con el inspector de propiedades integrado y el código se autogenerará por ti de vuelta!
 
-### 4. 🎭 Demos Visuales Animados (Bespoke Animations)
+### Demos Visuales
 Visualizaciones animadas y dinámicas que enseñan el comportamiento interno de los comandos más complejos:
 * **Git:** Animaciones sobre el funcionamiento de `git init`, `add`, `commit`, `push`, `pull`, `stash`, `merge` y `rebase`.
 * **Docker:** Visualización interactiva de capas de imágenes en construcción (`docker build`), redes locales de contenedores (`docker compose`) y contenedor corriendo (`docker run`).
@@ -49,11 +45,11 @@ Visualizaciones animadas y dinámicas que enseñan el comportamiento interno de 
 
 ---
 
-## 🛠️ Tecnologías Soportadas (Tech Stack)
+### Tecnologías Soportadas
 
 Integrado con iconos devicons de [devicon.dev](https://devicon.dev/) para proporcionar una referencia visual clara de todo el ecosistema de herramientas:
 
-### 🖥️ Sistemas Operativos (Operating Systems)
+### Sistemas Operativos
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg" width="40" height="40" alt="Windows" title="Windows" />&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" width="40" height="40" alt="Ubuntu" title="Ubuntu" />&nbsp;
@@ -62,7 +58,7 @@ Integrado con iconos devicons de [devicon.dev](https://devicon.dev/) para propor
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fedora/fedora-original.svg" width="40" height="40" alt="Fedora" title="Fedora" />
 </p>
 
-### 🔧 Herramientas & CLI (Tools & CLI)
+### Herramientas & CLI
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" width="40" height="40" alt="Git" title="Git" />&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" width="40" height="40" alt="Bash" title="Bash" />&nbsp;
@@ -70,7 +66,7 @@ Integrado con iconos devicons de [devicon.dev](https://devicon.dev/) para propor
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original.svg" width="40" height="40" alt="Apache" title="Apache" />
 </p>
 
-### 🌐 Desarrollo Frontend & Frameworks
+### Desarrollo Frontend & Frameworks
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="40" height="40" alt="HTML5" title="HTML5" />&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="40" height="40" alt="CSS3" title="CSS3" />&nbsp;
@@ -84,7 +80,7 @@ Integrado con iconos devicons de [devicon.dev](https://devicon.dev/) para propor
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" width="40" height="40" alt="Flutter" title="Flutter" />
 </p>
 
-### ⚙️ Backend, Infraestructura & BD (Backend, Infra & DB)
+### Backend, Infraestructura & BD
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" width="40" height="40" alt="Node.js" title="Node.js" />&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="40" height="40" alt="Python" title="Python" />&nbsp;
@@ -98,25 +94,6 @@ Integrado con iconos devicons de [devicon.dev](https://devicon.dev/) para propor
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" width="40" height="40" alt="Redis" title="Redis" />&nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg" width="40" height="40" alt="Oracle" title="Oracle" />
 </p>
-
----
-
-## 🚀 Cómo Ejecutar el Proyecto (Getting Started)
-
-Dado que este proyecto está diseñado como una aplicación web nativa ultraligera, **no requiere complejas fases de compilación o instalación de dependencias en local**:
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Andres-007/Commands.git
-   ```
-2. Accede al directorio del proyecto:
-   ```bash
-   cd Hub_For_Commands
-   ```
-3. Abre el archivo `index.html` en tu navegador web preferido o usa Live Server en tu editor:
-   * **¡Y listo!** Explora, aprende, codifica y optimiza en tiempo real de forma ultra-rápida.
-
----
 
 ## 📂 Estructura del Código (Project Structure)
 
@@ -142,15 +119,3 @@ Hub_For_Commands/
     ├── visual-demos.js   # Generador y enrutador dinámico de animaciones visuales bespoke
     └── *-data.js         # Colecciones de datos de comandos (definiciones, ejemplos, salidas)
 ```
-
----
-
-## 🛠️ Optimización y Rendimiento de Producción (Performance Achievements)
-
-En la última actualización de rendimiento para producción:
-1. **Layout Thrashing Eliminado:** Removimos escuchadores de eventos `mousemove` globales y redundantes sobre el DOM.
-2. **Throttling con `requestAnimationFrame`:** Implementamos un middleware de renderizado para el Spotlight Glow en `js/card-glow.js`. Ahora, el navegador solo actualiza los estilos CSS de la tarjeta activa a la velocidad nativa de refresco de la pantalla.
-3. **Timer Wakeups Reducidos a Cero:** Reemplazamos la lógica periódica de `setInterval` en `js/live-editor.js` con inicialización directa conducida por eventos al montarse el `TerminalEngine` en `js/terminal-engine.js`.
-
----
-Desarrollado con dedicación y optimizado al extremo. ¡Feliz aprendizaje de la consola de comandos! 🚀
