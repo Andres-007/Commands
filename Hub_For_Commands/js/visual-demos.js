@@ -437,7 +437,7 @@
      * Bespoke demo registry
      * ================================================================ */
 
-    var DEMOS = {
+    const DEMOS = {
         // CSS
         'css-padding': paddingDemo,
         'css-margin': marginDemo,
@@ -625,7 +625,7 @@
             '</div>';
     }
 
-    var CATEGORY_TEMPLATES = {
+    const CATEGORY_TEMPLATES = {
         'file-create': tplFileCreate,
         'file-delete': tplFileDelete,
         'file-move': tplFileMove,
@@ -721,10 +721,10 @@
         if (!rootEl) return;
         rootEl.classList.remove('visual-demo--empty');
 
-        var cmd = (id || '').toLowerCase();
+        const cmd = (id || '').toLowerCase();
 
         // 1) Try exact bespoke demo (From your Tier 1)
-        var fn = DEMOS[id];
+        const fn = DEMOS[id];
         if (fn) { fn(rootEl); return; }
 
         // 2) Bespoke fuzzy matching loop (For existing Tier 1 fallback)
@@ -742,7 +742,7 @@
         if (/(docker|k8s|kubectl|pod|container)/.test(cmd)) { tplContainerAction(rootEl, cmd); return; }
 
         // 4) Category Template Fallback
-        var tpl = CATEGORY_TEMPLATES[id];
+        const tpl = CATEGORY_TEMPLATES[id];
         if (tpl) { tpl(rootEl, id); return; }
 
         // 5) Generic fallback 

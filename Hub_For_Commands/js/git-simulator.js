@@ -162,8 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendOutput(text) {
         const div = document.createElement('div');
         div.className = 'bash-line';
-        // Handle newlines
-        div.innerHTML = text.replace(/\n/g, '<br>').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+        
+        // Escape HTML characters to prevent Cross-Site Scripting (XSS)
+        const escaped = String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
+        div.innerHTML = escaped.replace(/\n/g, '<br>').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
         bashOutput.appendChild(div);
         bashOutput.scrollTop = bashOutput.scrollHeight;
     }

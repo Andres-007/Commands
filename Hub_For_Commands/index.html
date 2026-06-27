@@ -23,6 +23,14 @@
     </header>
 
     <main class="hub-container">
+        <!-- Search Bar -->
+        <div class="hub-search-container">
+            <div class="hub-search-wrapper">
+                <input type="text" id="hub-search-input" placeholder="Buscar tecnología" autocomplete="off">
+                <button type="button" id="hub-search-clear" class="hub-search-clear" aria-label="Limpiar búsqueda">&times;</button>
+            </div>
+        </div>
+
         <!-- Segmented Filter Bar — sits at the very top of main -->
         <div class="hub-filter-bar-wrap">
             <nav id="hub-filter-bar" class="hub-filter-bar" aria-label="Filter by category">
@@ -44,29 +52,13 @@
         <div id="main-grid" class="cards-grid"></div>
     </main>
 
-    <div id="hub-folder-modal" class="hub-folder-modal" hidden aria-hidden="true">
-        <div class="hub-folder-modal-backdrop"></div>
-        <div class="hub-folder-modal-panel" role="dialog" aria-modal="true" aria-labelledby="hub-folder-modal-title">
-            <button type="button" class="hub-folder-modal-close" aria-label="Close">&times;</button>
-            <div class="hub-folder-modal-head">
-                <h2 id="hub-folder-modal-title"></h2>
-                <p id="hub-folder-modal-subtitle"></p>
-            </div>
-            <div class="hub-folder-modal-body">
-                <div id="hub-folder-modal-grid" class="cards-grid"></div>
-            </div>
-        </div>
-    </div>
-
     <footer class="site-footer">
         <p>SIXNIE</p>
     </footer>
 
-    <script src="js/linux-folders-data.js"></script>
-    <script src="js/hub-folders.js"></script>
+    <script src="js/js.js"></script>
     <script src="js/hub-filter.js"></script>
     <script src="js/card-glow.js"></script>
-    <script src="js/js.js"></script>
 </body>
 
 </html>

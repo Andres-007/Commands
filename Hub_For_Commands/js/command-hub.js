@@ -12,7 +12,7 @@
     if (window._terminalEngine) return;
 
     // Auto-detect shellMode from existing config if not set
-    var cfg = window.commandHubConfig;
+    const cfg = window.commandHubConfig;
     if (cfg && !cfg.shellMode) {
         // Use formatUnknown function or prompt to detect shell environment
         if (cfg.formatUnknown) {
@@ -21,8 +21,8 @@
         }
 
         // Detect from prompt/title/welcome
-        var prompt = (cfg.promptSymbol || '').toLowerCase();
-        var title = (cfg.terminalTitle || '').toLowerCase();
+        const prompt = (cfg.promptSymbol || '').toLowerCase();
+        const title = (cfg.terminalTitle || '').toLowerCase();
 
         if (prompt === '>' || title.indexOf('cmd') !== -1) {
             cfg.shellMode = 'cmd';
@@ -48,8 +48,8 @@
     }
 
     // Dynamically load terminal-engine.js
-    var currentScript = document.querySelector('script[src*="command-hub"]');
-    var s = document.createElement('script');
+    const currentScript = document.querySelector('script[src*="command-hub"]');
+    const s = document.createElement('script');
     s.src = currentScript
         ? currentScript.src.replace('command-hub.js', 'terminal-engine.js')
         : '../js/terminal-engine.js';

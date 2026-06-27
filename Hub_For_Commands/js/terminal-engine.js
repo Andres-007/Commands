@@ -568,7 +568,16 @@
             if (!this.els.bashOutput) return;
             const div = document.createElement('div');
             div.className = 'bash-line';
-            div.innerHTML = text
+            
+            // Escape HTML characters to prevent Cross-Site Scripting (XSS)
+            const escaped = String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+
+            div.innerHTML = escaped
                 .replace(/\n/g, '<br>')
                 .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
             this.els.bashOutput.appendChild(div);

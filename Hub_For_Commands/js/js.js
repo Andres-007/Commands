@@ -113,11 +113,43 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'apache', name: 'Apache', category: 'devops', icon: 'devicon-apache-plain colored' },
             { id: 'nginx', name: 'Nginx', category: 'devops', icon: 'devicon-nginx-original colored' },
             { id: 'cassandra', name: 'Cassandra', category: 'databases', imgIcon: 'https://cdn.simpleicons.org/apachecassandra/1287B1' },
-            // Linux Distros
-            { id: 'ubuntu', name: 'Ubuntu', category: 'os', icon: 'devicon-ubuntu-plain colored' },
-            { id: 'debian', name: 'Debian', category: 'os', icon: 'devicon-debian-plain colored' },
-            { id: 'centos', name: 'CentOS', category: 'os', icon: 'devicon-centos-plain colored' },
-            { id: 'fedora', name: 'Fedora', category: 'os', icon: 'devicon-fedora-plain colored' }
+            // Linux Distros — Debian/Ubuntu Family (APT-based)
+            { id: 'ubuntu', name: 'Ubuntu', category: 'os', icon: 'devicon-ubuntu-plain colored', href: 'Pages/linux/ubuntu.html', desc: 'Find all Ubuntu desktop commands, explained with real use cases for all levels.' },
+            { id: 'ubuntu-server', name: 'Ubuntu Server', category: 'os', icon: 'devicon-ubuntu-plain colored', href: 'Pages/linux/ubuntu.html', desc: 'Find all Ubuntu Server administration and system commands.' },
+            { id: 'debian', name: 'Debian', category: 'os', icon: 'devicon-debian-plain colored', href: 'Pages/linux/apt-based.html', desc: 'Find all Debian commands, explained with real use cases for all levels.' },
+            { id: 'mint', name: 'Linux Mint', category: 'os', imgIcon: 'https://cdn.simpleicons.org/linuxmint/87CF3E', href: 'Pages/linux/apt-based.html', desc: 'Find all Linux Mint and Cinnamon desktop commands.' },
+            { id: 'popos', name: 'Pop!_OS', category: 'os', imgIcon: 'https://cdn.simpleicons.org/popos/48B9C7', href: 'Pages/linux/apt-based.html', desc: 'Find all Pop!_OS and COSMIC desktop commands.' },
+            { id: 'zorin', name: 'Zorin OS', category: 'os', imgIcon: 'https://cdn.simpleicons.org/zorin/04A1EB', href: 'Pages/linux/apt-based.html', desc: 'Find Zorin OS configuration and customization commands.' },
+            { id: 'elementary', name: 'elementary OS', category: 'os', imgIcon: 'https://cdn.simpleicons.org/elementary/64BAFE', href: 'Pages/linux/apt-based.html', desc: 'Find all elementary OS and Pantheon commands.' },
+            { id: 'kali', name: 'Kali Linux', category: 'os', imgIcon: 'https://cdn.simpleicons.org/kalilinux/557C94', href: 'Pages/linux/apt-based.html', desc: 'Find Kali Linux cybersecurity, penetration testing, and security commands.' },
+            { id: 'raspberrypi', name: 'Raspberry Pi OS', category: 'os', imgIcon: 'https://cdn.simpleicons.org/raspberrypi/C51A4A', href: 'Pages/linux/apt-based.html', desc: 'Find Raspberry Pi OS commands for hardware, pinouts and configuration.' },
+            { id: 'lubuntu', name: 'Lubuntu', category: 'os', icon: 'devicon-ubuntu-plain colored', href: 'Pages/linux/apt-based.html', desc: 'Find Lubuntu light desktop and LXQt setup commands.' },
+            { id: 'xubuntu', name: 'Xubuntu', category: 'os', icon: 'devicon-ubuntu-plain colored', href: 'Pages/linux/apt-based.html', desc: 'Find Xubuntu desktop commands and XFCE configurations.' },
+
+            // Linux Distros — Fedora/RHEL Family (DNF-based)
+            { id: 'fedora', name: 'Fedora', category: 'os', icon: 'devicon-fedora-plain colored', href: 'Pages/linux/dnf-based.html', desc: 'Find all Fedora commands, explained with real use cases.' },
+            { id: 'rhel', name: 'Red Hat Enterprise Linux', category: 'os', icon: 'devicon-redhat-plain colored', href: 'Pages/linux/dnf-based.html', desc: 'Find Red Hat Enterprise Linux server and enterprise commands.' },
+            { id: 'centos', name: 'CentOS Stream', category: 'os', icon: 'devicon-centos-plain colored', href: 'Pages/linux/dnf-based.html', desc: 'Find CentOS Stream server commands and DNF operations.' },
+            { id: 'almalinux', name: 'AlmaLinux', category: 'os', icon: 'devicon-almalinux-plain colored', href: 'Pages/linux/dnf-based.html', desc: 'Find AlmaLinux enterprise server management commands.' },
+            { id: 'rocky', name: 'Rocky Linux', category: 'os', imgIcon: 'https://cdn.simpleicons.org/rockylinux/10B981', href: 'Pages/linux/dnf-based.html', desc: 'Find Rocky Linux deployment and system administration commands.' },
+            { id: 'oracle-linux', name: 'Oracle Linux', category: 'os', icon: 'devicon-oracle-original colored', href: 'Pages/linux/dnf-based.html', desc: 'Find Oracle Linux server, kernel, and enterprise commands.' },
+
+            // Linux Distros — Arch Family (Pacman-based)
+            { id: 'arch', name: 'Arch Linux', category: 'os', icon: 'devicon-archlinux-plain colored', href: 'Pages/linux/pacman-based.html', desc: 'Find Arch Linux commands, pacman package manager, and AUR helper commands.' },
+            { id: 'manjaro', name: 'Manjaro', category: 'os', imgIcon: 'https://cdn.simpleicons.org/manjaro/35BF5C', href: 'Pages/linux/pacman-based.html', desc: 'Find Manjaro desktop commands and pacman package management.' },
+            { id: 'endeavouros', name: 'EndeavourOS', category: 'os', imgIcon: 'https://cdn.simpleicons.org/endeavouros/7F3FBF', href: 'Pages/linux/pacman-based.html', desc: 'Find EndeavourOS terminal-centric commands and configurations.' },
+            { id: 'garuda', name: 'Garuda Linux', category: 'os', imgIcon: 'https://cdn.simpleicons.org/garudalinux/white', href: 'Pages/linux/pacman-based.html', desc: 'Find Garuda Linux gaming and performance optimization commands.' },
+
+            // Linux Distros — SUSE Family (Zypper-based)
+            { id: 'opensuse-leap', name: 'openSUSE Leap', category: 'os', icon: 'devicon-opensuse-plain colored', href: 'Pages/linux/zypper-based.html', desc: 'Find openSUSE Leap stable workstation and server commands.' },
+            { id: 'opensuse-tumbleweed', name: 'openSUSE Tumbleweed', category: 'os', icon: 'devicon-opensuse-plain colored', href: 'Pages/linux/zypper-based.html', desc: 'Find openSUSE Tumbleweed rolling release commands.' },
+            { id: 'suse-enterprise', name: 'SUSE Linux Enterprise', category: 'os', icon: 'devicon-suse-plain colored', href: 'Pages/linux/zypper-based.html', desc: 'Find SUSE Linux Enterprise Server (SLES) administration commands.' },
+
+            // Linux Distros — Independent/Others
+            { id: 'alpine', name: 'Alpine Linux', category: 'os', imgIcon: 'https://cdn.simpleicons.org/alpinelinux/0D597F', href: 'Pages/linux/apk-based.html', desc: 'Find Alpine Linux minimal container, apk package manager commands.' },
+            { id: 'gentoo', name: 'Gentoo', category: 'os', icon: 'devicon-gentoo-plain colored', href: 'Pages/linux/emerge-based.html', desc: 'Find Gentoo source compilation, Portage, and emerge commands.' },
+            { id: 'void', name: 'Void Linux', category: 'os', imgIcon: 'https://cdn.simpleicons.org/voidlinux/478061', href: 'Pages/linux/xbps-based.html', desc: 'Find Void Linux xbps manager and runit service commands.' },
+            { id: 'slackware', name: 'Slackware', category: 'os', imgIcon: 'https://cdn.simpleicons.org/slackware/white', href: 'Pages/linux/slackware.html', desc: 'Find Slackware package management and slackpkg commands.' }
         ];
 
         mainGrid.innerHTML = masterTopics.map(topic => {
@@ -125,38 +157,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<img src="${topic.imgIcon}" class="card-icon-img" alt="${topic.name}">`
                 : `<i class="${topic.icon} card-icon ${topic.light ? 'card-icon--light' : ''}"></i>`;
 
+            const href = topic.href || `Pages/${topic.id}.html`;
+            const desc = topic.desc || `Find all ${topic.name} commands, explained with real use cases for beginner, mid, and advanced levels.`;
+
             return `
                 <div class="command-card" data-category="${topic.category}">
                     ${iconHtml}
                     <h2>${topic.name} Commands</h2>
-                    <p>Find all ${topic.name} commands, explained with real use cases for beginner, mid, and advanced levels.</p>
-                    <a href="Pages/${topic.id}.html" class="nav-btn transition-link">Search commands</a>
+                    <p>${desc}</p>
+                    <a href="${href}" class="nav-btn transition-link">Search commands</a>
                 </div>
             `;
         }).join('');
-    }
-
-    // ================================================================
-    // FILTERING LOGIC
-    // ================================================================
-    const filterBtns = document.querySelectorAll('.hub-pill');
-    if (filterBtns.length > 0 && mainGrid) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelector('.hub-pill.active')?.classList.remove('active');
-                e.target.classList.add('active');
-                
-                const filter = e.target.getAttribute('data-category');
-                const cards = mainGrid.querySelectorAll('.command-card');
-                
-                cards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
     }
 });
