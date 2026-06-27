@@ -175,7 +175,7 @@ function Generate-Page($p) {
     </main>
 
     <footer class="site-footer">
-        <p>SIXNIE</p>
+        <p>&copy; 2026 Hub de Comandos. Guías interactivas de referencia para desarrollo y sistemas operativos.</p>
     </footer>
 
     <script src="${jsPrefix}js/js.js"></script>
