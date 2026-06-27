@@ -1,4 +1,4 @@
-const slackwareLinuxCommandsData = [
+const slackwareCommandsData = [
     { id: "slackpkg-update", command: "sudo slackpkg update", keywords: ["changelog"], technical_desc: "Downloads ChangeLog.txt from mirrors and refreshes package lists.", non_technical_desc: "Refresh Slackware package lists.", example: "sudo slackpkg update", sim_output: "Checking for updates ... DONE\nPackage list updated." },
     { id: "slackpkg-upgrade-all", command: "sudo slackpkg upgrade-all", keywords: ["upgrade"], technical_desc: "Compares installed versions against mirror and prompts upgrades.", non_technical_desc: "Upgrade all packages with confirmations.", example: "sudo slackpkg upgrade-all", sim_output: "The following packages will be upgraded:\n aaa_glibc-solibs ...\nProceed (y/N)?" },
     { id: "slackpkg-install", command: "sudo slackpkg install <pkg>", keywords: ["add"], technical_desc: "Downloads official Slackware packages from mirror.", non_technical_desc: "Install from Slackware sets.", example: "sudo slackpkg install vim", sim_output: "Downloading vim ...\nInstalling vim ... DONE" },

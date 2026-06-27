@@ -1,4 +1,4 @@
-const apkLinuxCommandsData = [
+const apkCommandsData = [
     { id: "apk-update", command: "sudo apk update", keywords: ["index"], technical_desc: "Downloads APKINDEX.tar.gz from repositories into cache.", non_technical_desc: "Refreshes Alpine package index.", example: "sudo apk update", sim_output: "OK: 9984 distinct packages available" },
     { id: "apk-upgrade", command: "sudo apk upgrade", keywords: ["updates"], technical_desc: "Upgrades installed packages if newer versions exist in indexes.", non_technical_desc: "Updates installed packages.", example: "sudo apk upgrade", sim_output: "Upgrading critical operating system libraries...\nOK: 12 MiB in 8 packages" },
     { id: "apk-add", command: "sudo apk add <pkg>", keywords: ["install"], technical_desc: "Resolves constraints with apk-tools SAT solver.", non_technical_desc: "Installs packages.", example: "sudo apk add nginx", sim_output: "(1/3) Installing nginx\nOK: 24 MiB in 42 packages" },

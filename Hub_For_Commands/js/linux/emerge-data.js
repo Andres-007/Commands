@@ -1,4 +1,4 @@
-const emergeLinuxCommandsData = [
+const emergeCommandsData = [
     { id: "emerge-sync", command: "sudo emerge --sync", keywords: ["portage tree"], technical_desc: "Updates Portage tree via rsync/git.", non_technical_desc: "Downloads latest Gentoo package tree.", example: "sudo emerge --sync", sim_output: ">>> Syncing repository 'gentoo' into '/usr/portage'...\n... Manifest Timestamp: 2026-05-15" },
     { id: "emerge-world", command: "sudo emerge -uDNav @world", keywords: ["upgrade"], technical_desc: "-u upgrade, -D deep, -N newuse, -av verbose ask.", non_technical_desc: "Smart upgrade of installed packages.", example: "sudo emerge -uDNav @world", sim_output: "These are the packages that would be merged...\n[nomerge]" },
     { id: "emerge-install", command: "sudo emerge <pkg>", keywords: ["install"], technical_desc: "Builds from ebuild with sandbox FEATURES.", non_technical_desc: "Installs by compiling from source (often).", example: "sudo emerge vim", sim_output: ">>> Emerging (1 of 1) app-editors/vim-9.1..." },

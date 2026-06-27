@@ -1,4 +1,4 @@
-const dnfLinuxCommandsData = [
+const dnfCommandsData = [
     { id: "dnf-update", command: "sudo dnf check-update", keywords: ["refresh"], technical_desc: "Contacts RPM repositories and lists packages with newer versions.", non_technical_desc: "Shows what could be upgraded without installing yet.", example: "sudo dnf check-update", sim_output: "curl.x86_64    8.5.0-1.fc40    updates" },
     { id: "dnf-upgrade", command: "sudo dnf upgrade", keywords: ["update all"], technical_desc: "Upgrades all packages to latest versions respecting transaction solver.", non_technical_desc: "Updates installed RPM packages.", example: "sudo dnf upgrade", sim_output: "Upgraded:\n curl-8.5.0-1.fc40.x86_64\nComplete!" },
     { id: "dnf-install", command: "sudo dnf install <pkg>", keywords: ["add"], technical_desc: "Resolves RPM dependencies via libsolv and installs.", non_technical_desc: "Installs software from Fedora/RHEL repos.", example: "sudo dnf install git", sim_output: "Installed:\n git-2.45.0-1.fc40.x86_64\nComplete!" },

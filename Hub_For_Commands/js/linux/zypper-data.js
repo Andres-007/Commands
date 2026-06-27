@@ -1,4 +1,4 @@
-const zypperLinuxCommandsData = [
+const zypperCommandsData = [
     { id: "zypper-refresh", command: "sudo zypper refresh", keywords: ["repos"], technical_desc: "Downloads repository metadata.", non_technical_desc: "Updates package catalog.", example: "sudo zypper refresh", sim_output: "Retrieving repository 'openSUSE-Tumbleweed-Oss' metadata ... done." },
     { id: "zypper-update", command: "sudo zypper update", keywords: ["upgrade"], technical_desc: "Installs newer RPM versions.", non_technical_desc: "Applies updates.", example: "sudo zypper update", sim_output: "The following 8 packages are going to be upgraded:\n curl libcurl4 ..." },
     { id: "zypper-install", command: "sudo zypper install <pkg>", keywords: ["in"], technical_desc: "SAT solver resolves RPM deps.", non_technical_desc: "Installs packages.", example: "sudo zypper install git", sim_output: "Installing: git-2.44.0-1.1.x86_64 ... done" },

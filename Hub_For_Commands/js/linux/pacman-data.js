@@ -1,4 +1,4 @@
-const pacmanLinuxCommandsData = [
+const pacmanCommandsData = [
     { id: "pacman-sync", command: "sudo pacman -Sy", keywords: ["refresh db"], technical_desc: "Synchronizes local sync databases from mirrors.", non_technical_desc: "Updates the package catalog.", example: "sudo pacman -Sy", sim_output: "downloading core.db ...\ndownloading extra.db ..." },
     { id: "pacman-upgrade", command: "sudo pacman -Syu", keywords: ["full upgrade"], technical_desc: "-Syu refreshes DB then upgrades all packages (rolling release core workflow).", non_technical_desc: "Updates everything like a mini distro upgrade.", example: "sudo pacman -Syu", sim_output: ":: Starting full system upgrade...\nresolving dependencies...\nPackages (12) ... Total Download Size:   120 MiB" },
     { id: "pacman-install", command: "sudo pacman -S <pkg>", keywords: ["install"], technical_desc: "Installs packages from sync repos using libalpm.", non_technical_desc: "Installs software.", example: "sudo pacman -S vim", sim_output: "resolving dependencies...\nPackages (1) vim-9.1...\n:: Proceed with installation? [Y/n]" },

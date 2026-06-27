@@ -1,4 +1,4 @@
-const xbpsLinuxCommandsData = [
+const xbpsCommandsData = [
     { id: "xbps-query-remote", command: "sudo xbps-install -Su", keywords: ["upgrade"], technical_desc: "Synchronizes remote repositories and upgrades.", non_technical_desc: "Full system update on Void.", example: "sudo xbps-install -Su", sim_output: "Name    Action Version\n kernel  update 6.8.9_1 ...\nTransaction succeeded." },
     { id: "xbps-install", command: "sudo xbps-install <pkg>", keywords: ["add"], technical_desc: "XBPS installs packages from binary repos.", non_technical_desc: "Install software.", example: "sudo xbps-install nginx", sim_output: "nginx-1.26.0_1: found ...\nnginx-1.26.0_1: unpacking ...\nTransaction succeeded." },
     { id: "xbps-remove", command: "sudo xbps-remove <pkg>", keywords: ["delete"], technical_desc: "Removes package files and updates pkgdb.", non_technical_desc: "Uninstall.", example: "sudo xbps-remove nginx", sim_output: "Removing nginx-1.26.0_1 ...\nTransaction succeeded." },
